@@ -23,7 +23,7 @@ public class ListaMedicamentoDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroListaMed> produtos = new ArrayList<>();
+        List<CadastroListaMed> medicamentos = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM lista_medicamento");
@@ -46,7 +46,7 @@ public class ListaMedicamentoDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return medicamentos;
     }
     
     public void create(CadastroListaMed p){

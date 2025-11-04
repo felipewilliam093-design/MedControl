@@ -5,7 +5,7 @@
 package DAO;
 
 import BD.Conexao;
-import Objetos.CadastroCompra;
+import Objetos.CadastroCompras;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -20,18 +20,18 @@ import javax.swing.JOptionPane;
  * @author leonardo.hpavan
  */
 public class CompraDAO {
-    public List<CadastroCompra> read(){
+    public List<CadastroCompras> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroCompra> produtos = new ArrayList<>();
+        List<CadastroCompras> compras = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM compra");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                CadastroCompra p = new CadastroCompra();
+                CadastroCompras p = new CadastroCompras();
                 p.setNum_nf_entrada(rs.getInt("num_nf_entrada"));
                 p.setCnpj_lab(rs.getString("cnpj_lab"));
                 p.setData_entrada(rs.getString("data_entrada"));
@@ -49,10 +49,10 @@ public class CompraDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return compras;
     }
     
-    public void create(CadastroCompra p){
+    public void create(CadastroCompras p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -62,7 +62,7 @@ public class CompraDAO {
             stmt.setString(2, p.getCnpj_lab());
             stmt.setString(3, p.getData_entrada());
             stmt.setDouble(4, p.getCusto_total());
-            stmt.setDouble(5, p.getValor_total());
+            stmt.setDouble(5, p.getValor_total(Double.valueOf(jTValor_Total.getText())));
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
             stmt.setDate(8, (Date) p.getData_ult_compra());
@@ -78,7 +78,7 @@ public class CompraDAO {
         }
     }
     
-    public void update(CadastroCompra p){
+    public void update(CadastroCompras p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -88,7 +88,7 @@ public class CompraDAO {
             stmt.setString(2, p.getCnpj_lab());
             stmt.setString(3, p.getData_entrada());
             stmt.setDouble(4, p.getCusto_total());
-            stmt.setDouble(5, p.getValor_total());
+            stmt.setDouble(5, p.getValor_total(Double.valueOf(jTValor_Total.getText())));
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
             stmt.setDate(8, (Date) p.getData_ult_compra());
@@ -103,7 +103,7 @@ public class CompraDAO {
         }
     }
     
-    public void delete(CadastroCompra p){
+    public void delete(CadastroCompras p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         

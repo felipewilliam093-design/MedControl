@@ -4,6 +4,9 @@
  */
 package Janelas;
 
+import Objetos.CadastroCompras;
+
+
 /**
  *
  * @author leonardo.hpavan
@@ -43,6 +46,9 @@ public class CadastroCompra extends javax.swing.JFrame {
         jTTotal_Nota = new javax.swing.JTextField();
         jTForma_Pagamento = new javax.swing.JTextField();
         jTData_Ult_Compra = new javax.swing.JTextField();
+        jBAlterar = new javax.swing.JButton();
+        jBDeletar = new javax.swing.JButton();
+        jBCadastro = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +83,17 @@ public class CadastroCompra extends javax.swing.JFrame {
             }
         });
 
+        jBAlterar.setText("Alterar");
+
+        jBDeletar.setText("Deletar");
+
+        jBCadastro.setText("Cadastrar");
+        jBCadastro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,29 +102,38 @@ public class CadastroCompra extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTNumNFEntrada)
-                            .addComponent(jTCNPJ_lab)
-                            .addComponent(jTData_Entrada)
-                            .addComponent(jTValor_Total)
-                            .addComponent(jTCusto_Total)
-                            .addComponent(jTTotal_Nota)
-                            .addComponent(jTForma_Pagamento)
-                            .addComponent(jTData_Ult_Compra, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTNumNFEntrada)
+                                    .addComponent(jTCNPJ_lab)
+                                    .addComponent(jTData_Entrada)
+                                    .addComponent(jTValor_Total)
+                                    .addComponent(jTCusto_Total)
+                                    .addComponent(jTTotal_Nota)
+                                    .addComponent(jTForma_Pagamento)
+                                    .addComponent(jTData_Ult_Compra, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jBCadastro)
+                                .addGap(72, 72, 72)
+                                .addComponent(jBAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                                .addComponent(jBDeletar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(jLabel1)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +172,12 @@ public class CadastroCompra extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTData_Ult_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 25, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBDeletar)
+                    .addComponent(jBAlterar)
+                    .addComponent(jBCadastro))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -159,6 +190,19 @@ public class CadastroCompra extends javax.swing.JFrame {
     private void jTData_Ult_CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTData_Ult_CompraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTData_Ult_CompraActionPerformed
+
+    private void jBCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroActionPerformed
+      CadastroCompras c = new CadastroCompras();
+      c.setNum_nf_entrada(Integer.parseInt(jTNumNFEntrada.getText()));
+      c.setCnpj_lab(jTCNPJ_lab.getText());
+      c.setData_entrada(jTData_Entrada.getText());
+      c.setValor_total(Double.parseDouble(jTValor_Total.getText()));
+      c.setCusto_total(Double.parseDouble(jTCusto_Total.getText()));
+      c.setTotal_nota(Double.parseDouble(jTTotal_Nota.getText()));
+      c.setForma_pagamento(jTForma_Pagamento.getText());
+      c.setData_ult_compra(Date data_ult_compra.getText);
+      
+    }//GEN-LAST:event_jBCadastroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +240,9 @@ public class CadastroCompra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastro;
+    private javax.swing.JButton jBDeletar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

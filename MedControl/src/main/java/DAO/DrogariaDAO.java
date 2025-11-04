@@ -23,7 +23,7 @@ public class DrogariaDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Cadastro> produtos = new ArrayList<>();
+        List<Cadastro> drogarias = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM drogaria");
@@ -48,7 +48,7 @@ public class DrogariaDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return drogarias;
     }
     
     public void create(Cadastro p){

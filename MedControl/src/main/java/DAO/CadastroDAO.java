@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class ProdutoDAO {
+public class CadastroDAO {
     public List<Cadastro> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Cadastro> produtos = new ArrayList<>();
+        List<Cadastro> cadastros = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM laboratorio_fornecedor");
@@ -44,7 +44,7 @@ public class ProdutoDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return cadastros;
     }
     
     public void create(Cadastro p){
