@@ -4,6 +4,8 @@
  */
 package Janelas;
 
+import Objetos.Cadastro;
+
 /**
  *
  * @author william.flima4
@@ -46,9 +48,9 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         jTRua = new javax.swing.JTextField();
         jCEstado = new javax.swing.JComboBox<>();
         jTCidade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBCadastrar = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +65,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de laboratórios fornecedores");
+        jLabel1.setText("Cadastro de Drogaria");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -183,11 +185,16 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jButton1.setText("jButton1");
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        jBAlterar.setText("Alterar");
 
-        jButton3.setText("jButton3");
+        jBExcluir.setText("Excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,11 +208,11 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
+                .addComponent(jBCadastrar)
                 .addGap(129, 129, 129)
-                .addComponent(jButton2)
+                .addComponent(jBAlterar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(jBExcluir)
                 .addGap(29, 29, 29))
         );
         layout.setVerticalGroup(
@@ -217,9 +224,9 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jBCadastrar)
+                    .addComponent(jBAlterar)
+                    .addComponent(jBExcluir))
                 .addGap(18, 18, 18))
         );
 
@@ -237,6 +244,18 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCEstadoActionPerformed
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        Cadastro c = new Cadastro();
+        c.setCnpj(jTCnpj.getText());
+        c.setNome(jTNome.getText());
+        c.setIE(jTIe.getText());
+        c.setCep(jTCep.getText());
+        c.setEstado((String) jCEstado.getSelectedItem());
+        c.setCidade(jTCidade.getText());
+        c.setBairro(jTBairro.getText());
+        c.setRua(jTRua.getText());
+    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,9 +293,9 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBExcluir;
     private javax.swing.JComboBox<String> jCEstado;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

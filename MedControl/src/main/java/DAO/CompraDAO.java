@@ -5,8 +5,9 @@
 package DAO;
 
 import BD.Conexao;
-import Objetos.CadastroListaMed;
+import Objetos.CadastroCompra;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,25 +19,27 @@ import javax.swing.JOptionPane;
  *
  * @author leonardo.hpavan
  */
-public class ListaMedicamentoDAO {
-    public List<CadastroListaMed> read(){
+public class CompraDAO {
+    public List<CadastroCompra> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroListaMed> produtos = new ArrayList<>();
+        List<CadastroCompra> produtos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM lista_medicamento");
+            stmt = con.prepareStatement("SELECT * FROM compra");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                CadastroListaMed p = new CadastroListaMed();
-                p.setCodigo(rs.getString("codigo"));
+                CadastroCompra p = new CadastroCompra();
+                p.setNum_nf_entrada(rs.getInt("num_nf_entrada"));
                 p.setCnpj_lab(rs.getString("cnpj_lab"));
-                p.setCusto_unit(rs.getString("custo_unit"));
-                p.setValor_unit(rs.getString("valor_unit"));
-                p.setDescricao(rs.getString("descricao"));
-                
+                p.setData_entrada(rs.getString("data_entrada"));
+                p.setValor_total(rs.getDouble("valor_total"));
+                p.setCusto_total(rs.getDouble("custo_total"));
+                p.setTotal_nota(rs.getDouble("total_nota"));
+                p.setForma_pagamento(rs.getString("forma_pagamento"));
+                p.setData_ult_compra((rs.getDate("data_ult_compra")));
             }
             
         } catch (SQLException e) {
@@ -49,17 +52,20 @@ public class ListaMedicamentoDAO {
         return produtos;
     }
     
-    public void create(CadastroListaMed p){
+    public void create(CadastroCompra p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("insert into lista_medicamento(codigo,cnpj_lab, custo_unit, valor_unit, descricao) values(?, ?, ?, ?, ?)");
-            stmt.setString(1, p.getCodigo());
+            stmt = con.prepareStatement("insert into compra(num_nf_entrada,cnpj_lab,data_entrada, custo_total, valor_total,total_nota, forma_pagamento, data_ult_compra) values(?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setInt(1, p.getNum_nf_entrada());
             stmt.setString(2, p.getCnpj_lab());
-            stmt.setString(3, p.getCusto_unit());
-            stmt.setString(4, p.getValor_unit());
-            stmt.setString(5, p.getDescricao());
+            stmt.setString(3, p.getData_entrada());
+            stmt.setDouble(4, p.getCusto_total());
+            stmt.setDouble(5, p.getValor_total());
+            stmt.setDouble(6, p.getTotal_nota());
+            stmt.setString(7, p.getForma_pagamento());
+            stmt.setDate(8, (Date) p.getData_ult_compra());
         
             
             stmt.execute();
@@ -72,17 +78,20 @@ public class ListaMedicamentoDAO {
         }
     }
     
-    public void update(CadastroListaMed p){
+    public void update(CadastroCompra p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update lista_medicamento set  cnpj_lab = ?, custo_uni = ?, valor_unit = ?, descricao = ? where codigo = ?");
-            stmt.setString(1, p.getCodigo());
+            stmt = con.prepareStatement("update cnpj_lab = ?,data_entrada = ?, custo_total = ?, valor_total = ?,total_nota = ?, forma_pagamento = ?, data_ult_compra = ? where num_nf_entrada = ?");
+            stmt.setInt(1, p.getNum_nf_entrada());
             stmt.setString(2, p.getCnpj_lab());
-            stmt.setString(3, p.getCusto_unit());
-            stmt.setString(4, p.getValor_unit());
-            stmt.setString(5, p.getDescricao());
+            stmt.setString(3, p.getData_entrada());
+            stmt.setDouble(4, p.getCusto_total());
+            stmt.setDouble(5, p.getValor_total());
+            stmt.setDouble(6, p.getTotal_nota());
+            stmt.setString(7, p.getForma_pagamento());
+            stmt.setDate(8, (Date) p.getData_ult_compra());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -94,13 +103,13 @@ public class ListaMedicamentoDAO {
         }
     }
     
-    public void delete(CadastroListaMed p){
+    public void delete(CadastroCompra p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("delete from lista_medicamento where cnpj = ?");
-            stmt.setString(1, p.getCnpj_lab());
+            stmt = con.prepareStatement("delete from compra where num_nf_entrada = ?");
+            stmt.setInt(1, p.getNum_nf_entrada());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Removido com sucesso!");

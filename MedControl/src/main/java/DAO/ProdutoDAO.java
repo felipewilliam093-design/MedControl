@@ -21,7 +21,7 @@ public class ProdutoDAO {
         List<Cadastro> produtos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM tbl_produto");
+            stmt = con.prepareStatement("SELECT * FROM laboratorio_fornecedor");
             rs = stmt.executeQuery();
             
             while(rs.next()){
