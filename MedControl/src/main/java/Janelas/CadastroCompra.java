@@ -200,7 +200,7 @@ public class CadastroCompra extends javax.swing.JFrame {
       c.setCusto_total(Double.parseDouble(jTCusto_Total.getText()));
       c.setTotal_nota(Double.parseDouble(jTTotal_Nota.getText()));
       c.setForma_pagamento(jTForma_Pagamento.getText());
-      c.setData_ult_compra(Date data_ult_compra.getText);
+      c.setData_ult_compra(jTData_Ult_Compra.getText());
       
     }//GEN-LAST:event_jBCadastroActionPerformed
 

@@ -62,7 +62,7 @@ public class CompraDAO {
             stmt.setString(2, p.getCnpj_lab());
             stmt.setString(3, p.getData_entrada());
             stmt.setDouble(4, p.getCusto_total());
-            stmt.setDouble(5, p.getValor_total(Double.valueOf(jTValor_Total.getText())));
+            stmt.setDouble Double.Double.parseDouble((5, p.getValor_total()));
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
             stmt.setDate(8, (Date) p.getData_ult_compra());
