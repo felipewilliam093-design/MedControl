@@ -5,13 +5,13 @@
 package DAO;
 
 import BD.Conexao;
-import Objetos.CadastroCompras;
+import Objetos.CadastroVendas;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -19,27 +19,27 @@ import javax.swing.JOptionPane;
  *
  * @author leonardo.hpavan
  */
-public class CompraDAO {
-    public List<CadastroCompras> read(){
+public class VendaDAO {
+    public List<CadastroVendas> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroCompras> produtos = new ArrayList<>();
+        List<CadastroVendas> produtos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM compra");
+            stmt = con.prepareStatement("SELECT * FROM venda");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                CadastroCompras p = new CadastroCompras();
-                p.setNum_nf_entrada(rs.getInt("num_nf_entrada"));
-                p.setCnpj_lab(rs.getString("cnpj_lab"));
-                p.setData_entrada(rs.getDate("data_entrada"));
+                CadastroVendas p = new CadastroVendas();
+                p.setNmr_nf_entrada(rs.getInt("nmr_nf_entrada"));
+                p.setCnpj_drogaria(rs.getString("cnpj_drogaria"));
+                p.setData_entrega(rs.getDate("data_entrega"));
                 p.setValor_total(rs.getDouble("valor_total"));
                 p.setCusto_total(rs.getDouble("custo_total"));
                 p.setTotal_nota(rs.getDouble("total_nota"));
                 p.setForma_pagamento(rs.getString("forma_pagamento"));
-                p.setData_ult_compra((rs.getDate("data_ult_compra")));
+                p.setData_ult_venda((rs.getDate("data_ult_venda")));
             }
             
         } catch (SQLException e) {
@@ -52,20 +52,20 @@ public class CompraDAO {
         return produtos;
     }
     
-    public void create(CadastroCompras p){
+    public void create(CadastroVendas p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("insert into compra(num_nf_entrada,cnpj_lab,data_entrada, custo_total, valor_total,total_nota, forma_pagamento, data_ult_compra) values(?, ?, ?, ?, ?, ?, ?, ?)");
-            stmt.setInt(1, p.getNum_nf_entrada());
-            stmt.setString(2, p.getCnpj_lab());
-            stmt.setDate(3, (Date) p.getData_entrada());
+            stmt = con.prepareStatement("insert into venda(nmr_nf_entrada,cnpj_drogaria,data_entrega, custo_total, valor_total,total_nota, forma_pagamento, data_ult_venda) values(?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setInt(1, p.getNmr_nf_entrada());
+            stmt.setString(2, p.getCnpj_drogaria());
+            stmt.setDate(3, (java.sql.Date) p.getData_entrega());
             stmt.setDouble(4, p.getCusto_total());
             stmt.setDouble(5, p.getValor_total());
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
-            stmt.setDate(8, (Date) p.getData_ult_compra());
+            stmt.setDate(8, (java.sql.Date) p.getData_ult_venda());
         
             
             stmt.execute();
@@ -78,20 +78,20 @@ public class CompraDAO {
         }
     }
     
-    public void update(CadastroCompras p){
+    public void update(CadastroVendas p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update cnpj_lab = ?,data_entrada = ?, custo_total = ?, valor_total = ?,total_nota = ?, forma_pagamento = ?, data_ult_compra = ? where num_nf_entrada = ?");
-            stmt.setInt(1, p.getNum_nf_entrada());
-            stmt.setString(2, p.getCnpj_lab());
-            stmt.setDate(3, (Date) p.getData_entrada());
+            stmt = con.prepareStatement("update cnpj_drogaria = ?,data_entrega = ?, custo_total = ?, valor_total = ?,total_nota = ?, forma_pagamento = ?, data_ult_venda = ? where nmr_nf_entrada = ?");
+            stmt.setInt(1, p.getNmr_nf_entrada());
+            stmt.setString(2, p.getCnpj_drogaria());
+            stmt.setDate(3, (java.sql.Date) p.getData_entrega());
             stmt.setDouble(4, p.getCusto_total());
             stmt.setDouble(5, p.getValor_total());
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
-            stmt.setDate(8, (Date) p.getData_ult_compra());
+            stmt.setDate(8, (java.sql.Date) p.getData_ult_venda());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -103,13 +103,13 @@ public class CompraDAO {
         }
     }
     
-    public void delete(CadastroCompras p){
+    public void delete(CadastroVendas p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("delete from compra where num_nf_entrada = ?");
-            stmt.setInt(1, p.getNum_nf_entrada());
+            stmt = con.prepareStatement("delete from compra where nmr_nf_entrada = ?");
+            stmt.setInt(1, p.getNmr_nf_entrada());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Removido com sucesso!");

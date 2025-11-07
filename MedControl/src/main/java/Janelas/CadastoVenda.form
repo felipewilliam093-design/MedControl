@@ -24,13 +24,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -44,23 +40,25 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="jBAlterar" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jBExcluir" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTNumNFEntrada" max="32767" attributes="0"/>
-                          <Component id="jTCNPJ_lab" max="32767" attributes="0"/>
-                          <Component id="jTData_Entrada" max="32767" attributes="0"/>
-                          <Component id="jTValor_Total" max="32767" attributes="0"/>
-                          <Component id="jTCusto_Total" max="32767" attributes="0"/>
-                          <Component id="jTTotal_Nota" max="32767" attributes="0"/>
-                          <Component id="jTForma_Pagamento" max="32767" attributes="0"/>
-                          <Component id="jTData_Ult_Compra" pref="200" max="32767" attributes="0"/>
+                          <Component id="jTNmrNFEntrada" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTCNPJ_drogaria" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTData_Entrega" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTValor_Total" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTCusto_Total" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTTotal_Nota" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTForma_Pagamento" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jTData_Ult_Venda" alignment="0" pref="200" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace min="0" pref="9" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -72,17 +70,17 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTNumNFEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTNmrNFEntrada" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTCNPJ_lab" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTCNPJ_drogaria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTData_Entrada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTData_Entrega" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -107,7 +105,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTData_Ult_Compra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTData_Ult_Venda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -115,79 +113,21 @@
                   <Component id="jBAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Cadastro de Compra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="N&#xfa;mero Nota Fisca de Entrada"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CNPJ Laborat&#xf3;rio"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Data de Entrada"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Valor Total"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel6">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Custo Total"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="jTData_Ult_Venda">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTData_Ult_VendaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Total da Nota"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel8">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Forma de Pagamento"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Data da &#xda;ltima Compra"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTNumNFEntrada">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTCNPJ_lab">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTData_Entrada">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTValor_Total">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTCusto_Total">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCusto_TotalActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTTotal_Nota">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTForma_Pagamento">
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTData_Ult_Compra">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTData_Ult_CompraActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jBCadastrar">
       <Properties>
@@ -197,14 +137,72 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCadastrarActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Forma de Pagamento"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="jBAlterar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="jLabel9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data da &#xda;ltima Compra"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="jBExcluir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTNmrNFEntrada">
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTCNPJ_drogaria">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="Cadastro de Venda"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTData_Entrega">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero Nota Fisca de Entrada"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTValor_Total">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CNPJ Drogaria"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTCusto_Total">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTCusto_TotalActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data de Entrega"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTTotal_Nota">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor Total"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="jTForma_Pagamento">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Custo Total"/>
       </Properties>
     </Component>
   </SubComponents>
