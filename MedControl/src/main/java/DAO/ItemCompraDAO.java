@@ -5,7 +5,7 @@
 package DAO;
 
 import BD.Conexao;
-import Objetos.CadastroListaMed;
+import Objetos.CadastroItemCompra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,25 +18,24 @@ import javax.swing.JOptionPane;
  *
  * @author leonardo.hpavan
  */
-public class ListaMedicamentoDAO {
-    public List<CadastroListaMed> read(){
+public class ItemCompraDAO {
+    public List<CadastroItemCompra> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroListaMed> medicamentos = new ArrayList<>();
+        List<CadastroItemCompra> itemcompra = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM lista_medicamento");
+            stmt = con.prepareStatement("SELECT * FROM item_compra");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                CadastroListaMed p = new CadastroListaMed();
-                p.setCodigo(rs.getString("codigo"));
-                p.setCnpj_lab(rs.getString("cnpj_lab"));
-                p.setCusto_unit(rs.getString("custo_unit"));
-                p.setValor_unit(rs.getString("valor_unit"));
-                p.setDescricao(rs.getString("descricao"));
-                
+                CadastroItemCompra ic = new CadastroItemCompra();
+                ic.setCodigo(rs.getInt("codigo"));
+                ic.setNum_nf_entrada_compra(rs.getInt("num_nf_entrada_compra"));
+                ic.setCusto_unit(rs.getDouble("custo_unit"));
+                ic.setValor_unit(rs.getDouble("valor_unit"));
+                ic.setDescricao("descricao");
             }
             
         } catch (SQLException e) {
@@ -46,21 +45,20 @@ public class ListaMedicamentoDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return medicamentos;
+        return itemcompra;
     }
     
-    public void create(CadastroListaMed p){
+    public void create(CadastroItemCompra ic){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("insert into lista_medicamento(codigo,cnpj_lab, custo_unit, valor_unit, descricao) values(?, ?, ?, ?, ?)");
-            stmt.setString(1, p.getCodigo());
-            stmt.setString(2, p.getCnpj_lab());
-            stmt.setString(3, p.getCusto_unit());
-            stmt.setString(4, p.getValor_unit());
-            stmt.setString(5, p.getDescricao());
-        
+            stmt = con.prepareStatement("insert into item_compra(codigo,  num_nf_entrada_compra, custo_unit, valor_unit, descricao) values(?, ?, ?, ?, ?)");
+            stmt.setInt(1, ic.getCodigo());
+            stmt.setInt(2, ic.getNum_nf_entrada_compra());
+            stmt.setDouble(3, ic.getCusto_unit());
+            stmt.setDouble(4, ic.getValor_unit());
+            stmt.setString(5, ic.getDescricao());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
@@ -72,17 +70,17 @@ public class ListaMedicamentoDAO {
         }
     }
     
-    public void update(CadastroListaMed p){
+    public void update(CadastroItemCompra ic){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update lista_medicamento set  cnpj_lab = ?, custo_uni = ?, valor_unit = ?, descricao = ? where codigo = ?");
-            stmt.setString(1, p.getCodigo());
-            stmt.setString(2, p.getCnpj_lab());
-            stmt.setString(3, p.getCusto_unit());
-            stmt.setString(4, p.getValor_unit());
-            stmt.setString(5, p.getDescricao());
+            stmt = con.prepareStatement("update num_nf_entrada_compra = ?, custo_unit = ?, valor_unit = ?, descricao = ? where codigo = ?");
+            stmt.setInt(1, ic.getCodigo());
+            stmt.setInt(2, ic.getNum_nf_entrada_compra());
+            stmt.setDouble(3, ic.getCusto_unit());
+            stmt.setDouble(4, ic.getValor_unit());
+            stmt.setString(5, ic.getDescricao());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -94,13 +92,13 @@ public class ListaMedicamentoDAO {
         }
     }
     
-    public void delete(CadastroListaMed p){
+    public void delete(CadastroItemCompra ic){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("delete from lista_medicamento where cnpj = ?");
-            stmt.setString(1, p.getCnpj_lab());
+            stmt = con.prepareStatement("delete from item_compra where codigo = ?");
+            stmt.setInt(1, ic.getCodigo());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Removido com sucesso!");

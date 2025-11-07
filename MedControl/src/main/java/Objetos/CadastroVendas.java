@@ -6,61 +6,62 @@ package Objetos;
 
 import java.util.Date;
 
+
 /**
  *
  * @author leonardo.hpavan
  */
-public class CadastroCompra {
-
-    private int num_nf_entrada;
-    private String cnpj_lab;
-    private String data_entrada;
+public class CadastroVendas {
+    private int nmr_nf_entrada;
+    private String cnpj_drogaria;
+    private Date data_entrega;
     private Double valor_total;
     private Double custo_total;
+    private int qtde;
     private Double total_nota;
-    private String forma_pagamento; 
-    private Date data_ult_compra;
-    
+    private String forma_pagamento;
+    private Date data_ult_venda;
+
     /**
-     * @return the num_nf_entrada
+     * @return the nmr_nf_entrada
      */
-    public int getNum_nf_entrada() {
-        return num_nf_entrada;
+    public int getNmr_nf_entrada() {
+        return nmr_nf_entrada;
     }
 
     /**
-     * @param num_nf_entrada the num_nf_entrada to set
+     * @param nmr_nf_entrada the nmr_nf_entrada to set
      */
-    public void setNum_nf_entrada(int num_nf_entrada) {
-        this.num_nf_entrada = num_nf_entrada;
+    public void setNmr_nf_entrada(int nmr_nf_entrada) {
+        this.nmr_nf_entrada = nmr_nf_entrada;
     }
 
     /**
-     * @return the cnpj_lab
+     * @return the cnpj_drogaria
      */
-    public String getCnpj_lab() {
-        return cnpj_lab;
+    public String getCnpj_drogaria() {
+        return cnpj_drogaria;
     }
 
     /**
-     * @param cnpj_lab the cnpj_lab to set
+     * @param cnpj_drogaria the cnpj_drogaria to set
      */
-    public void setCnpj_lab(String cnpj_lab) {
-        this.cnpj_lab = cnpj_lab;
+    public void setCnpj_drogaria(String cnpj_drogaria) {
+        this.cnpj_drogaria = cnpj_drogaria;
     }
 
     /**
-     * @return the data_entrada
+     * @return the data_entrega
      */
-    public String getData_entrada() {
-        return data_entrada;
+    public Date getData_entrega() {
+        return data_entrega;
     }
 
     /**
-     * @param data_entrada the data_entrada to set
+     * @param data_entrega the data_entrega to set
      */
-    public void setData_entrada(String data_entrada) {
-        this.data_entrada = data_entrada;
+    public void setData_entrega(Date data_entrega) {
+        this.data_entrega = data_entrega;
     }
 
     /**
@@ -92,6 +93,20 @@ public class CadastroCompra {
     }
 
     /**
+     * @return the qtde
+     */
+    public int getQtde() {
+        return qtde;
+    }
+
+    /**
+     * @param qtde the qtde to set
+     */
+    public void setQtde(int qtde) {
+        this.qtde = qtde;
+    }
+
+    /**
      * @return the total_nota
      */
     public Double getTotal_nota() {
@@ -120,17 +135,18 @@ public class CadastroCompra {
     }
 
     /**
-     * @return the data_ult_compra
+     * @return the data_ult_venda
      */
-    public Date getData_ult_compra() {
-        return data_ult_compra;
+    public Date getData_ult_venda() {
+        return data_ult_venda;
     }
 
     /**
-     * @param data_ult_compra the data_ult_compra to set
+     * @param data_ult_venda the data_ult_venda to set
      */
-    public void setData_ult_compra(Date data_ult_compra) {
-        this.data_ult_compra = data_ult_compra;
+    public void setData_ult_venda(Date data_ult_venda) {
+        this.data_ult_venda = data_ult_venda;
     }
+
    
 }

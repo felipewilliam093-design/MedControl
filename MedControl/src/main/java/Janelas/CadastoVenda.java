@@ -4,21 +4,16 @@
  */
 package Janelas;
 
-import DAO.CompraDAO;
-import Objetos.CadastroCompras;
-import java.time.Instant;
-import java.util.Date;
-
 /**
  *
  * @author leonardo.hpavan
  */
-public class CadastroCompra extends javax.swing.JFrame {
+public class CadastoVenda extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastroCompra
+     * Creates new form CadastoVenda
      */
-    public CadastroCompra() {
+    public CadastoVenda() {
         initComponents();
     }
 
@@ -31,59 +26,36 @@ public class CadastroCompra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jTData_Ult_Venda = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jTNumNFEntrada = new javax.swing.JTextField();
-        jTCNPJ_lab = new javax.swing.JTextField();
-        jTData_Entrada = new javax.swing.JTextField();
-        jTValor_Total = new javax.swing.JTextField();
-        jTCusto_Total = new javax.swing.JTextField();
-        jTTotal_Nota = new javax.swing.JTextField();
-        jTForma_Pagamento = new javax.swing.JTextField();
-        jTData_Ult_Compra = new javax.swing.JTextField();
         jBCadastrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jBAlterar = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
         jBExcluir = new javax.swing.JButton();
+        jTNmrNFEntrada = new javax.swing.JTextField();
+        jTCNPJ_drogaria = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jTData_Entrega = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTValor_Total = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTCusto_Total = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTTotal_Nota = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTForma_Pagamento = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Compra");
-
-        jLabel2.setText("Número Nota Fisca de Entrada");
-
-        jLabel3.setText("CNPJ Laboratório");
-
-        jLabel4.setText("Data de Entrada");
-
-        jLabel5.setText("Valor Total");
-
-        jLabel6.setText("Custo Total");
+        jTData_Ult_Venda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTData_Ult_VendaActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Total da Nota");
-
-        jLabel8.setText("Forma de Pagamento");
-
-        jLabel9.setText("Data da Última Compra");
-
-        jTCusto_Total.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTCusto_TotalActionPerformed(evt);
-            }
-        });
-
-        jTData_Ult_Compra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTData_Ult_CompraActionPerformed(evt);
-            }
-        });
 
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,21 +64,41 @@ public class CadastroCompra extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Forma de Pagamento");
+
         jBAlterar.setText("Alterar");
 
+        jLabel9.setText("Data da Última Compra");
+
         jBExcluir.setText("Excluir");
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Cadastro de Venda");
+
+        jLabel2.setText("Número Nota Fisca de Entrada");
+
+        jLabel3.setText("CNPJ Drogaria");
+
+        jTCusto_Total.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCusto_TotalActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Data de Entrega");
+
+        jLabel5.setText("Valor Total");
+
+        jLabel6.setText("Custo Total");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -123,15 +115,17 @@ public class CadastroCompra extends javax.swing.JFrame {
                                 .addComponent(jBAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jBExcluir))
-                            .addComponent(jTNumNFEntrada)
-                            .addComponent(jTCNPJ_lab)
-                            .addComponent(jTData_Entrada)
+                            .addComponent(jTNmrNFEntrada)
+                            .addComponent(jTCNPJ_drogaria)
+                            .addComponent(jTData_Entrega)
                             .addComponent(jTValor_Total)
                             .addComponent(jTCusto_Total)
                             .addComponent(jTTotal_Nota)
                             .addComponent(jTForma_Pagamento)
-                            .addComponent(jTData_Ult_Compra, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
-                .addContainerGap(15, Short.MAX_VALUE))
+                            .addComponent(jTData_Ult_Venda, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                        .addGap(0, 9, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,15 +135,15 @@ public class CadastroCompra extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTNumNFEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTNmrNFEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTCNPJ_lab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTCNPJ_drogaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTData_Entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTData_Entrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -169,40 +163,29 @@ public class CadastroCompra extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTData_Ult_Compra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTData_Ult_Venda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBCadastrar)
                     .addComponent(jBAlterar)
                     .addComponent(jBExcluir))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTData_Ult_VendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTData_Ult_VendaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTData_Ult_VendaActionPerformed
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
     private void jTCusto_TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCusto_TotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCusto_TotalActionPerformed
-
-    private void jTData_Ult_CompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTData_Ult_CompraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTData_Ult_CompraActionPerformed
-
-    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-        CadastroCompras c = new CadastroCompras();
-        CompraDAO cdao = new CompraDAO();
-        
-        c.setNum_nf_entrada(Integer.parseInt(jTNumNFEntrada.getText()));
-        c.setCnpj_lab(jTCNPJ_lab.getText());
-        c.setData_entrada(Date (jTData_Entrada.getText()));
-        c.setValor_total(Double.valueOf(jTValor_Total.getText()));
-        c.setCusto_total(Double.valueOf(jTCusto_Total.getText()));
-        c.setTotal_nota(Double.valueOf(jTTotal_Nota.getText()));
-        c.setForma_pagamento(jTForma_Pagamento.getText());
-        c.setData_ult_compra(Date(jTData_Ult_Compra.getText()));
-        
-    }//GEN-LAST:event_jBCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,20 +204,20 @@ public class CadastroCompra extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroCompra.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroCompra().setVisible(true);
+                new CadastoVenda().setVisible(true);
             }
         });
     }
@@ -252,17 +235,13 @@ public class CadastroCompra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTCNPJ_lab;
+    private javax.swing.JTextField jTCNPJ_drogaria;
     private javax.swing.JTextField jTCusto_Total;
-    private javax.swing.JTextField jTData_Entrada;
-    private javax.swing.JTextField jTData_Ult_Compra;
+    private javax.swing.JTextField jTData_Entrega;
+    private javax.swing.JTextField jTData_Ult_Venda;
     private javax.swing.JTextField jTForma_Pagamento;
-    private javax.swing.JTextField jTNumNFEntrada;
+    private javax.swing.JTextField jTNmrNFEntrada;
     private javax.swing.JTextField jTTotal_Nota;
     private javax.swing.JTextField jTValor_Total;
     // End of variables declaration//GEN-END:variables
-
-    private Date Date(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

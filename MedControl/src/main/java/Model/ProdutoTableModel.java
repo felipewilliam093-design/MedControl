@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author william.flima4
- */
+
 public class ProdutoTableModel extends AbstractTableModel {
     private List<Cadastro> dados = new ArrayList<>();
     private String[] colunas = {"IE", "Nome", "CEP", "Estado", "Cidade", "Bairro", "Rua", "Numero"};
