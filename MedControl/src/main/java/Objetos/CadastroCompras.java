@@ -64,9 +64,10 @@ public class CadastroCompras {
     }
 
     /**
+     * @param valor_total
      * @return the valor_total
      */
-    public Double getValor_total(Double valueOf) {
+    public Double getValor_total() {
         return valor_total;
     }
 
