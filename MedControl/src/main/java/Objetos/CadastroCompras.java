@@ -66,7 +66,7 @@ public class CadastroCompras {
     /**
      * @return the valor_total
      */
-    public Double getValor_total() {
+    public Double getValor_total(Double valueOf) {
         return valor_total;
     }
 
@@ -131,6 +131,10 @@ public class CadastroCompras {
      */
     public void setData_ult_compra(Date data_ult_compra) {
         this.data_ult_compra = data_ult_compra;
+    }
+
+    public void setVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
    
 }
