@@ -148,5 +148,9 @@ public class CadastroVendas {
         this.data_ult_venda = data_ult_venda;
     }
 
+    public void setData_ult_compra(java.sql.Date date) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
    
 }

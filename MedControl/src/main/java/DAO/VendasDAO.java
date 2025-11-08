@@ -59,13 +59,13 @@ public class VendasDAO {
             stmt = con.prepareStatement("insert into venda(nmr_nf_entrada,cnpj_drogaria,data_entrega, valor_total, custo_total, qtde, total_nota, forma_pagamento, data_ult_compra) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, p.getNmr_nf_entrada());
             stmt.setString(2, p.getCnpj_drogaria());
-            stmt.setDate(3, p.getData_entrega());
+            stmt.setDate(3, (Date) p.getData_entrega());
             stmt.setDouble(4, p.getValor_total());
             stmt.setDouble(5, p.getCusto_total());
             stmt.setInt(6, p.getQtde());
             stmt.setDouble(7, p.getTotal_nota());
             stmt.setString(8, p.getForma_pagamento());
-            stmt.setDate(9, (Date) p.getData_ult_compra());
+            stmt.setDate(9, (Date) p.getData_ult_venda());
         
             
             stmt.execute();
@@ -86,13 +86,13 @@ public class VendasDAO {
             stmt = con.prepareStatement("update cnpj_drogaria = ?,data_entrega = ?, valor_total = ?, custo_total = ?, qtde = ?, total_nota = ?, forma_pagamento = ?, data_ult_compra = ?, where nmr_nf_entrada = ?");
             stmt.setInt(1, p.getNmr_nf_entrada());
             stmt.setString(2, p.getCnpj_drogaria());
-            stmt.setDate(3, p.getData_entrega());
+            stmt.setDate(3, (Date) p.getData_entrega());
             stmt.setDouble(4, p.getValor_total());
             stmt.setDouble(5, p.getCusto_total());
             stmt.setInt(6, p.getQtde());
             stmt.setDouble(7, p.getTotal_nota());
             stmt.setString(8, p.getForma_pagamento());
-            stmt.setDate(9, (Date) p.getData_ult_compra());
+            stmt.setDate(9, (Date) p.getData_ult_venda());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Venda atualizada com sucesso!");
