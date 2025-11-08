@@ -193,6 +193,11 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         });
 
         jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
 
         jBExcluir.setText("Excluir");
 
@@ -256,6 +261,10 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         c.setBairro(jTBairro.getText());
         c.setRua(jTRua.getText());
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBAlterarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,6 +4,11 @@
  */
 package Janelas;
 
+import Objetos.Cadastro;
+import Objetos.CadastroVendas;
+import java.time.Instant;
+import java.util.Date;
+
 /**
  *
  * @author leonardo.hpavan
@@ -180,7 +185,14 @@ public class CadastoVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_jTData_Ult_VendaActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+        CadastroVendas c = new CadastroVendas();
         
+        c.setNmr_nf_entrada(Integer.parseInt(jTNmrNFEntrada.getText()));
+        c.setCnpj_drogaria(jTCNPJ_drogaria.getText());
+        c.setData_entrega(Date (jTData_Entrega.getText()));
+        c.setValor_total(Double.valueOf(jTValor_Total.getText()));
+        c.setCusto_total(Double.valueOf(jTCusto_Total.getText()));
+       
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jTCusto_TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCusto_TotalActionPerformed
@@ -244,4 +256,8 @@ public class CadastoVenda extends javax.swing.JFrame {
     private javax.swing.JTextField jTTotal_Nota;
     private javax.swing.JTextField jTValor_Total;
     // End of variables declaration//GEN-END:variables
+
+    private Date Date(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
