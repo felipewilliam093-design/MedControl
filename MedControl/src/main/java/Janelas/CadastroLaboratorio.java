@@ -4,6 +4,9 @@
  */
 package Janelas;
 
+import DAO.CadastroDAO;
+import DAO.LaboratorioDAO;
+import Model.LaboratorioTableModel;
 import Objetos.Cadastro;
 
 /**
@@ -11,12 +14,14 @@ import Objetos.Cadastro;
  * @author william.flima4
  */
 public class CadastroLaboratorio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form CadastroProduto
-     */
+    LaboratorioTableModel modelo = new LaboratorioTableModel();
+    
     public CadastroLaboratorio() {
         initComponents();
+        
+        jTFornecedores.setModel(modelo);
+        modelo.lerDados();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -51,10 +56,13 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         jBCadastroLab = new javax.swing.JButton();
         jBAlterarLab = new javax.swing.JButton();
         jBDeletarLab = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTFornecedores = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastro de laboratórios fornecedores");
 
@@ -91,40 +99,47 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLCEP)
-                            .addComponent(jLIE))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTIeLab, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTCepLab)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLCEP)
+                                    .addComponent(jLIE))
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTIeLab, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTCepLab)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLNome)
+                                    .addComponent(jLCNPJ))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTCnpjLab)
+                                    .addComponent(jTNomeLab)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLCidade)
+                                    .addComponent(jLRua)
+                                    .addComponent(jLEstado)
+                                    .addComponent(jLBairro))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTCidadeLab, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCEstadoLab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jTRuaLab, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTBairroLab)))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLNome)
-                            .addComponent(jLCNPJ))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTCnpjLab)
-                            .addComponent(jTNomeLab)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLCidade)
-                            .addComponent(jLRua)
-                            .addComponent(jLEstado)
-                            .addComponent(jLBairro)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTBairroLab)
-                            .addComponent(jTRuaLab)
-                            .addComponent(jCEstadoLab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTCidadeLab)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTNumero)))))
+                        .addComponent(jLabel2)
+                        .addGap(5, 5, 5)
+                        .addComponent(jTNumero)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,11 +177,11 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLRua)
                     .addComponent(jTRuaLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jBCadastroLab.setText("Cadastrar");
@@ -177,41 +192,85 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         });
 
         jBAlterarLab.setText("Alterar");
+        jBAlterarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarLabActionPerformed(evt);
+            }
+        });
 
         jBDeletarLab.setText("Excluir");
+        jBDeletarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeletarLabActionPerformed(evt);
+            }
+        });
+
+        jTFornecedores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTFornecedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTFornecedoresMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTFornecedores);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Consulta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jBCadastroLab)
-                .addGap(92, 92, 92)
-                .addComponent(jBAlterarLab)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
-                .addComponent(jBDeletarLab)
-                .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jBCadastroLab)
+                        .addGap(76, 76, 76)
+                        .addComponent(jBAlterarLab)
+                        .addGap(81, 81, 81)
+                        .addComponent(jBDeletarLab)))
+                .addGap(18, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBCadastroLab)
-                    .addComponent(jBAlterarLab)
-                    .addComponent(jBDeletarLab))
-                .addGap(22, 22, 22))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBCadastroLab)
+                            .addComponent(jBAlterarLab)
+                            .addComponent(jBDeletarLab))
+                        .addGap(22, 22, 22))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         pack();
@@ -223,6 +282,8 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
 
     private void jBCadastroLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroLabActionPerformed
         Cadastro c = new Cadastro();
+        CadastroDAO dao = new CadastroDAO();
+        
         c.setCnpj(jTCnpjLab.getText());
         c.setNome(jTNomeLab.getText());
         c.setIE(jTIeLab.getText());
@@ -232,7 +293,47 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         c.setBairro(jTBairroLab.getText());
         c.setRua(jTRuaLab.getText());
         c.setNumero(Integer.parseInt(jTNumero.getText()));
+        
+        dao.create(c);
+        modelo.recarregaTabela();
+        limpaCampos();
     }//GEN-LAST:event_jBCadastroLabActionPerformed
+
+    private void jBAlterarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarLabActionPerformed
+        if (jTFornecedores.getSelectedRow() != -1){
+            modelo.setValueAt(jTCnpjLab.getText(), jTFornecedores.getSelectedRow(), 0);
+            modelo.setValueAt(jTNomeLab.getText(), jTFornecedores.getSelectedRow(), 1);
+            modelo.setValueAt(jTIeLab.getText(), jTFornecedores.getSelectedRow(), 2);
+            modelo.setValueAt(jTCepLab.getText(), jTFornecedores.getSelectedRow(), 3);
+            modelo.setValueAt(jTCidadeLab.getText(), jTFornecedores.getSelectedRow(), 4);
+            modelo.setValueAt(jTBairroLab.getText(), jTFornecedores.getSelectedRow(), 5);
+            modelo.setValueAt(jTRuaLab.getText(), jTFornecedores.getSelectedRow(), 6);
+            modelo.setValueAt(jTNumero.getText(), jTFornecedores.getSelectedRow(), 7);
+        }
+    }//GEN-LAST:event_jBAlterarLabActionPerformed
+
+    private void jBDeletarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarLabActionPerformed
+        if (jTFornecedores.getSelectedRow() != -1){
+            Cadastro c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
+            CadastroDAO dao = new CadastroDAO();
+            dao.delete(c);
+            modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBDeletarLabActionPerformed
+
+    private void jTFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFornecedoresMouseClicked
+        if (jTFornecedores.getSelectedRow() != -1){
+            Cadastro c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
+            jTCnpjLab.setText(c.getCnpj());
+            jTNomeLab.setText(c.getNome());
+            jTIeLab.setText(c.getIE());
+            jTCepLab.setText(c.getCep());
+            jTCidadeLab.setText(c.getCidade());
+            jTBairroLab.setText(c.getBairro());
+            jTRuaLab.setText(c.getRua());
+            jTNumero.setText(String.valueOf(c.getNumero()));
+        }
+    }//GEN-LAST:event_jTFornecedoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -285,14 +386,29 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLRua;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTBairroLab;
     private javax.swing.JTextField jTCepLab;
     private javax.swing.JTextField jTCidadeLab;
     private javax.swing.JTextField jTCnpjLab;
+    private javax.swing.JTable jTFornecedores;
     private javax.swing.JTextField jTIeLab;
     private javax.swing.JTextField jTNomeLab;
     private javax.swing.JTextField jTNumero;
     private javax.swing.JTextField jTRuaLab;
     // End of variables declaration//GEN-END:variables
+
+    private void limpaCampos() {
+        jTCnpjLab.setText("");
+        jTNomeLab.setText("");
+        jTIeLab.setText("");
+        jTCepLab.setText("");
+        jTCidadeLab.setText("");
+        jTBairroLab.setText("");
+        jTRuaLab.setText("");
+        jTNumero.setText("");
+                
+    }
 }

@@ -78,7 +78,7 @@ public class CadastroDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update laboratorio_fornecedor set IE = ?, Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
+            stmt = con.prepareStatement("update laboratorio_fornecedor set Cnpj= ?, IE = ?, Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
             stmt.setString(1, p.getCnpj());
             stmt.setString(2, p.getIE());
             stmt.setString(3, p.getNome());

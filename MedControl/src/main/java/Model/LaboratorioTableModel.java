@@ -4,6 +4,7 @@
  */
 package Model;
 
+import DAO.CadastroDAO;
 import DAO.LaboratorioDAO;
 import Objetos.Cadastro;
 import java.util.ArrayList;
@@ -99,8 +100,8 @@ public class LaboratorioTableModel extends AbstractTableModel{
         return dados.get(linha);
     }
     
-    private void lerDados(){
-        LaboratorioDAO ldao = new LaboratorioDAO();
+    public void lerDados(){
+        CadastroDAO ldao = new CadastroDAO();
         
         for (Cadastro c : ldao.read()) {
             this.addLinha(c);
