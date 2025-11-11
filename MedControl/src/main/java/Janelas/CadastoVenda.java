@@ -4,7 +4,7 @@
  */
 package Janelas;
 
-import Objetos.Cadastro;
+import Objetos.Laboratorio;
 import Objetos.CadastroVendas;
 import java.time.Instant;
 import java.util.Date;

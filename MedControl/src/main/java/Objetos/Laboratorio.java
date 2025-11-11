@@ -5,7 +5,7 @@
 package Objetos;
 
 
-public class Cadastro {
+public class Laboratorio {
     private String cnpj;
     private String IE;
     private String nome;

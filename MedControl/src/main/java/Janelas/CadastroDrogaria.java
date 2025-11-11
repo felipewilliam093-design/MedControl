@@ -4,7 +4,7 @@
  */
 package Janelas;
 
-import Objetos.Cadastro;
+import Objetos.Laboratorio;
 
 /**
  *
@@ -282,7 +282,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     }//GEN-LAST:event_jCEstadoActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-        Cadastro c = new Cadastro();
+        Laboratorio c = new Laboratorio();
         c.setCnpj(jTCnpj.getText());
         c.setNome(jTNome.getText());
         c.setIE(jTIe.getText());

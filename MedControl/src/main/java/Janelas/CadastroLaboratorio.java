@@ -4,10 +4,8 @@
  */
 package Janelas;
 
-import DAO.CadastroDAO;
 import DAO.LaboratorioDAO;
 import Model.LaboratorioTableModel;
-import Objetos.Cadastro;
 
 /**
  *
@@ -281,8 +279,8 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTBairroLabActionPerformed
 
     private void jBCadastroLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroLabActionPerformed
-        Cadastro c = new Cadastro();
-        CadastroDAO dao = new CadastroDAO();
+        Objetos.Laboratorio c = new Objetos.Laboratorio();
+        LaboratorioDAO dao = new LaboratorioDAO();
         
         c.setCnpj(jTCnpjLab.getText());
         c.setNome(jTNomeLab.getText());
@@ -314,8 +312,8 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
 
     private void jBDeletarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarLabActionPerformed
         if (jTFornecedores.getSelectedRow() != -1){
-            Cadastro c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
-            CadastroDAO dao = new CadastroDAO();
+            Objetos.Laboratorio c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
+            LaboratorioDAO dao = new LaboratorioDAO();
             dao.delete(c);
             modelo.recarregaTabela();
         }
@@ -323,7 +321,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
 
     private void jTFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFornecedoresMouseClicked
         if (jTFornecedores.getSelectedRow() != -1){
-            Cadastro c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
+            Objetos.Laboratorio c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
             jTCnpjLab.setText(c.getCnpj());
             jTNomeLab.setText(c.getNome());
             jTIeLab.setText(c.getIE());

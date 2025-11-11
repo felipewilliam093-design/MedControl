@@ -4,14 +4,14 @@
  */
 package Model;
 
-import Objetos.Cadastro;
+import Objetos.Laboratorio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 
 public class ProdutoTableModel extends AbstractTableModel {
-    private List<Cadastro> dados = new ArrayList<>();
+    private List<Laboratorio> dados = new ArrayList<>();
     private String[] colunas = {"IE", "Nome", "CEP", "Estado", "Cidade", "Bairro", "Rua", "Numero"};
     
     @Override
