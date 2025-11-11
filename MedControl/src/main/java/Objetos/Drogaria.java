@@ -4,8 +4,11 @@
  */
 package Objetos;
 
-
-public class Cadastro {
+/**
+ *
+ * @author leonardo.hpavan
+ */
+public class Drogaria {
     private String cnpj;
     private String IE;
     private String nome;
@@ -141,6 +144,4 @@ public class Cadastro {
     public void setNumero(int numero) {
         this.numero = numero;
     }
-    
-    
 }

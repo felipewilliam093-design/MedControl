@@ -103,6 +103,14 @@ foreign key (cnpj_drogaria) references drogaria (cnpj)
 
 select * from venda;
 
+create table tbl_usuarios(
+id int auto_increment primary key,
+nome varchar(80) not null,
+login varchar(50) not null,
+senha varchar(255) not null,
+tipo varchar(10) not null
+);
+
 -- Índices de pesquisa
 CREATE INDEX idx_lab_nome ON laboratorio_fornecedor(nome);
 CREATE INDEX idx_lab_cidade ON laboratorio_fornecedor(cidade);

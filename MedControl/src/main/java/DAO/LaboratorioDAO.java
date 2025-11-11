@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DAO;
-
 import BD.Conexao;
-import Objetos.Cadastro;
+import Objetos.Laboratorio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,24 +13,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author leonardo.hpavan
- */
 public class LaboratorioDAO {
-    public List<Cadastro> read(){
+    public List<Laboratorio> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Cadastro> produtos = new ArrayList<>();
+        List<Laboratorio> cadastros = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM laboratorio_fornecedor");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Cadastro p = new Cadastro();
+                Laboratorio p = new Laboratorio();
                 p.setCnpj(rs.getString("cnpj"));
+                p.setIE(rs.getString("IE"));
                 p.setNome(rs.getString("Nome"));
                 p.setCep(rs.getString("CEP"));
                 p.setEstado(rs.getString("Estado"));
@@ -48,23 +44,24 @@ public class LaboratorioDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return cadastros;
     }
     
-    public void create(Cadastro p){
+    public void create(Laboratorio p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("insert into laboratorio_fornecedor(cnpj,Nome, CEP, Estado, Cidade, Bairro, Rua, Numero) values(?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt = con.prepareStatement("insert into laboratorio_fornecedor(cnpj, IE, Nome, CEP, Estado, Cidade, Bairro, Rua, Numero) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, p.getCnpj());
-            stmt.setString(2, p.getNome());
-            stmt.setString(3, p.getCep());
-            stmt.setString(4, p.getEstado());
-            stmt.setString(5, p.getCidade());
-            stmt.setString(6, p.getBairro());
-            stmt.setString(7, p.getRua());
-            stmt.setInt(8, p.getNumero());
+            stmt.setString(2, p.getIE());
+            stmt.setString(3, p.getNome());
+            stmt.setString(4, p.getCep());
+            stmt.setString(5, p.getEstado());
+            stmt.setString(6, p.getCidade());
+            stmt.setString(7, p.getBairro());
+            stmt.setString(8, p.getRua());
+            stmt.setInt(9, p.getNumero());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
@@ -76,20 +73,21 @@ public class LaboratorioDAO {
         }
     }
     
-    public void update(Cadastro p){
+    public void update(Laboratorio p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update laboratorio_fornecedor set  Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
+            stmt = con.prepareStatement("update laboratorio_fornecedor set Cnpj= ?, IE = ?, Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
             stmt.setString(1, p.getCnpj());
-            stmt.setString(2, p.getNome());
-            stmt.setString(3, p.getCep());
-            stmt.setString(4, p.getEstado());
-            stmt.setString(5, p.getCidade());
-            stmt.setString(6, p.getBairro());
-            stmt.setString(7, p.getRua());
-            stmt.setInt(8, p.getNumero());
+            stmt.setString(2, p.getIE());
+            stmt.setString(3, p.getNome());
+            stmt.setString(4, p.getCep());
+            stmt.setString(5, p.getEstado());
+            stmt.setString(6, p.getCidade());
+            stmt.setString(7, p.getBairro());
+            stmt.setString(8, p.getRua());
+            stmt.setInt(9, p.getNumero());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
@@ -101,7 +99,7 @@ public class LaboratorioDAO {
         }
     }
     
-    public void delete(Cadastro p){
+    public void delete(Laboratorio p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -118,4 +116,6 @@ public class LaboratorioDAO {
             Conexao.closeConnection(con, stmt);
         }
     }
+    
+    
 }

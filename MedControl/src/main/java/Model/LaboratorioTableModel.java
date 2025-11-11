@@ -5,7 +5,7 @@
 package Model;
 
 import DAO.LaboratorioDAO;
-import Objetos.Cadastro;
+import Objetos.Laboratorio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
  * @author leonardo.hpavan
  */
 public class LaboratorioTableModel extends AbstractTableModel{
-    private List<Cadastro> dados = new ArrayList<>();
+    private List<Laboratorio> dados = new ArrayList<>();
     private String[] colunas = {"CNPJ", "IE", "Nome", "CEP", "Estado", "Cidade", "Bairro", "Rua", "Numero"};
     
     @Override
@@ -85,7 +85,7 @@ public class LaboratorioTableModel extends AbstractTableModel{
         this.fireTableRowsUpdated(linha, linha);
     }
     
-    public void addLinha(Cadastro c){
+    public void addLinha(Laboratorio c){
         this.dados.add(c);
         this.fireTableDataChanged();
     }
@@ -95,14 +95,14 @@ public class LaboratorioTableModel extends AbstractTableModel{
         this.fireTableRowsDeleted(linha, linha);
     }
     
-    public Cadastro pegaDadosLinha(int linha){
+    public Laboratorio pegaDadosLinha(int linha){
         return dados.get(linha);
     }
     
-    private void lerDados(){
+    public void lerDados(){
         LaboratorioDAO ldao = new LaboratorioDAO();
         
-        for (Cadastro c : ldao.read()) {
+        for (Laboratorio c : ldao.read()) {
             this.addLinha(c);
         }
         this.fireTableDataChanged();
