@@ -5,7 +5,7 @@
 package DAO;
 
 import BD.Conexao;
-import Objetos.Laboratorio;
+import Objetos.Drogaria;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,18 +19,18 @@ import javax.swing.JOptionPane;
  * @author leonardo.hpavan
  */
 public class DrogariaDAO {
-    public List<Laboratorio> read(){
+    public List<Drogaria> read(){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Laboratorio> drogarias = new ArrayList<>();
+        List<Drogaria> drogarias = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM drogaria");
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Laboratorio p = new Laboratorio();
+                Drogaria p = new Drogaria();
                 p.setCnpj(rs.getString("cnpj"));
                 p.setNome(rs.getString("Nome"));
                 p.setCep(rs.getString("CEP"));
@@ -51,7 +51,7 @@ public class DrogariaDAO {
         return drogarias;
     }
     
-    public void create(Laboratorio p){
+    public void create(Drogaria p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -76,7 +76,7 @@ public class DrogariaDAO {
         }
     }
     
-    public void update(Laboratorio p){
+    public void update(Drogaria p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
@@ -101,7 +101,7 @@ public class DrogariaDAO {
         }
     }
     
-    public void delete(Laboratorio p){
+    public void delete(Drogaria p){
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         
