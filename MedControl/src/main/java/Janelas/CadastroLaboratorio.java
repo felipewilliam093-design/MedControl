@@ -4,21 +4,19 @@
  */
 package Janelas;
 
-import DAO.LaboratorioDAO;
-import Model.LaboratorioTableModel;
+
 
 /**
  *
  * @author william.flima4
  */
 public class CadastroLaboratorio extends javax.swing.JFrame {
-    LaboratorioTableModel modelo = new LaboratorioTableModel();
+    
     
     public CadastroLaboratorio() {
         initComponents();
         
-        jTFornecedores.setModel(modelo);
-        modelo.lerDados();
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -279,58 +277,19 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTBairroLabActionPerformed
 
     private void jBCadastroLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroLabActionPerformed
-        Objetos.Laboratorio c = new Objetos.Laboratorio();
-        LaboratorioDAO dao = new LaboratorioDAO();
-        
-        c.setCnpj(jTCnpjLab.getText());
-        c.setNome(jTNomeLab.getText());
-        c.setIE(jTIeLab.getText());
-        c.setCep(jTCepLab.getText());
-        c.setEstado((String) jCEstadoLab.getSelectedItem());
-        c.setCidade(jTCidadeLab.getText());
-        c.setBairro(jTBairroLab.getText());
-        c.setRua(jTRuaLab.getText());
-        c.setNumero(Integer.parseInt(jTNumero.getText()));
-        
-        dao.create(c);
-        modelo.recarregaTabela();
-        limpaCampos();
+       
     }//GEN-LAST:event_jBCadastroLabActionPerformed
 
     private void jBAlterarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarLabActionPerformed
-        if (jTFornecedores.getSelectedRow() != -1){
-            modelo.setValueAt(jTCnpjLab.getText(), jTFornecedores.getSelectedRow(), 0);
-            modelo.setValueAt(jTNomeLab.getText(), jTFornecedores.getSelectedRow(), 1);
-            modelo.setValueAt(jTIeLab.getText(), jTFornecedores.getSelectedRow(), 2);
-            modelo.setValueAt(jTCepLab.getText(), jTFornecedores.getSelectedRow(), 3);
-            modelo.setValueAt(jTCidadeLab.getText(), jTFornecedores.getSelectedRow(), 4);
-            modelo.setValueAt(jTBairroLab.getText(), jTFornecedores.getSelectedRow(), 5);
-            modelo.setValueAt(jTRuaLab.getText(), jTFornecedores.getSelectedRow(), 6);
-            modelo.setValueAt(jTNumero.getText(), jTFornecedores.getSelectedRow(), 7);
-        }
+        
     }//GEN-LAST:event_jBAlterarLabActionPerformed
 
     private void jBDeletarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarLabActionPerformed
-        if (jTFornecedores.getSelectedRow() != -1){
-            Objetos.Laboratorio c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
-            LaboratorioDAO dao = new LaboratorioDAO();
-            dao.delete(c);
-            modelo.recarregaTabela();
-        }
+        
     }//GEN-LAST:event_jBDeletarLabActionPerformed
 
     private void jTFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFornecedoresMouseClicked
-        if (jTFornecedores.getSelectedRow() != -1){
-            Objetos.Laboratorio c = modelo.pegaDadosLinha(jTFornecedores.getSelectedRow());
-            jTCnpjLab.setText(c.getCnpj());
-            jTNomeLab.setText(c.getNome());
-            jTIeLab.setText(c.getIE());
-            jTCepLab.setText(c.getCep());
-            jTCidadeLab.setText(c.getCidade());
-            jTBairroLab.setText(c.getBairro());
-            jTRuaLab.setText(c.getRua());
-            jTNumero.setText(String.valueOf(c.getNumero()));
-        }
+        
     }//GEN-LAST:event_jTFornecedoresMouseClicked
 
     /**
