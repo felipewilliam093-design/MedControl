@@ -5,6 +5,7 @@
 package Janelas;
 
 import DAO.CompraDAO;
+import Model.CompraTableModel;
 import Objetos.CadastroCompras;
 import java.time.Instant;
 import java.util.Date;
@@ -14,12 +15,14 @@ import java.util.Date;
  * @author leonardo.hpavan
  */
 public class CadastroCompra extends javax.swing.JFrame {
-
+            CompraTableModel modelo = new CompraTableModel();
     /**
      * Creates new form CadastroCompra
      */
     public CadastroCompra() {
         initComponents();
+        jTCompra.setModel(modelo);
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -52,7 +55,7 @@ public class CadastroCompra extends javax.swing.JFrame {
         jBAlterar = new javax.swing.JButton();
         jBExcluir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTCompra = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -97,10 +100,20 @@ public class CadastroCompra extends javax.swing.JFrame {
         });
 
         jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
 
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTCompra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -111,7 +124,12 @@ public class CadastroCompra extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTCompra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTCompraMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTCompra);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -229,14 +247,53 @@ public class CadastroCompra extends javax.swing.JFrame {
         
         c.setNum_nf_entrada(Integer.parseInt(jTNumNFEntrada.getText()));
         c.setCnpj_lab(jTCNPJ_lab.getText());
-        c.setData_entrada(Date (jTData_Entrada.getText()));
+        c.setData_entrada(parseDate (jTData_Entrada.getText()));
         c.setValor_total(Double.valueOf(jTValor_Total.getText()));
         c.setCusto_total(Double.valueOf(jTCusto_Total.getText()));
         c.setTotal_nota(Double.valueOf(jTTotal_Nota.getText()));
         c.setForma_pagamento(jTForma_Pagamento.getText());
-        c.setData_ult_compra(Date(jTData_Ult_Compra.getText()));
+        c.setData_ult_compra(parseDate(jTData_Ult_Compra.getText()));
+        
+        cdao.create(c);
+        modelo.recarregaTabela();
         
     }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        if (jTCompra.getSelectedRow() != -1){
+            modelo.setValueAt(jTNumNFEntrada.getText(), jTCompra.getSelectedRow(), 0);
+            modelo.setValueAt(jTCNPJ_lab.getText(), jTCompra.getSelectedRow(), 1);
+            modelo.setValueAt(jTData_Entrada.getText(), jTCompra.getSelectedRow(), 2);
+            modelo.setValueAt(jTValor_Total.getText(), jTCompra.getSelectedRow(), 3);
+            modelo.setValueAt(jTCusto_Total.getText(), jTCompra.getSelectedRow(), 4);
+            modelo.setValueAt(jTTotal_Nota.getText(), jTCompra.getSelectedRow(), 5);
+            modelo.setValueAt(jTForma_Pagamento.getText(), jTCompra.getSelectedRow(), 6);
+            modelo.setValueAt(jTData_Ult_Compra.getText(), jTCompra.getSelectedRow(), 7);
+         }
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTCompra.getSelectedRow() != -1){
+            CadastroCompras c = modelo.pegaDadosLinha(jTCompra.getSelectedRow());
+            CompraDAO cdao = new CompraDAO();
+            cdao.delete(c);
+            modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTCompraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTCompraMouseClicked
+        if (jTCompra.getSelectedRow() != -1){
+            CadastroCompras c = modelo.pegaDadosLinha(jTCompra.getSelectedRow());
+            jTNumNFEntrada.setText(String.valueOf(c.getNum_nf_entrada()));
+            jTCNPJ_lab.setText(c.getCnpj_lab());
+            jTData_Entrada.setText(String.valueOf(c.getData_entrada()));
+            jTValor_Total.setText(String.valueOf(c.getValor_total()));
+            jTCusto_Total.setText(String.valueOf(c.getCusto_total()));
+            jTTotal_Nota.setText(String.valueOf(c.getTotal_nota()));
+            jTForma_Pagamento.setText(c.getForma_pagamento());
+            jTData_Ult_Compra.setText(String.valueOf(c.getData_ult_compra()));
+        }
+    }//GEN-LAST:event_jTCompraMouseClicked
 
     /**
      * @param args the command line arguments
@@ -289,6 +346,7 @@ public class CadastroCompra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTCNPJ_lab;
+    private javax.swing.JTable jTCompra;
     private javax.swing.JTextField jTCusto_Total;
     private javax.swing.JTextField jTData_Entrada;
     private javax.swing.JTextField jTData_Ult_Compra;
@@ -296,10 +354,33 @@ public class CadastroCompra extends javax.swing.JFrame {
     private javax.swing.JTextField jTNumNFEntrada;
     private javax.swing.JTextField jTTotal_Nota;
     private javax.swing.JTextField jTValor_Total;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+    
+    private void limpaCampos() {
+        jTNumNFEntrada.setText("");
+        jTCNPJ_lab.setText("");
+        jTData_Entrada.setText("");
+        jTValor_Total.setText("");
+        jTCusto_Total.setText("");
+        jTTotal_Nota.setText("");
+        jTForma_Pagamento.setText("");
+        jTData_Ult_Compra.setText("");
 
-    private Date Date(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 }
+
+    private Date parseDate(String text) {
+         if (text == null || text.trim().isEmpty()) {
+        return new Date(); // data atual
+    }
+    try {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        return sdf.parse(text);
+    } catch (java.text.ParseException e) {
+        System.err.println("Erro ao converter data: " + text);
+        return new Date(); // fallback
+    }
+    }
+    
+}
+
