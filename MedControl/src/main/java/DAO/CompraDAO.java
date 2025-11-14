@@ -24,7 +24,7 @@ public class CompraDAO {
         Connection con = Conexao.getConnection();
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<CadastroCompras> produtos = new ArrayList<>();
+        List<CadastroCompras> compras = new ArrayList<>();
         
         try {
             stmt = con.prepareStatement("SELECT * FROM compra");
@@ -40,6 +40,8 @@ public class CompraDAO {
                 p.setTotal_nota(rs.getDouble("total_nota"));
                 p.setForma_pagamento(rs.getString("forma_pagamento"));
                 p.setData_ult_compra((rs.getDate("data_ult_compra")));
+                compras.add(p);
+                
             }
             
         } catch (SQLException e) {
@@ -49,7 +51,7 @@ public class CompraDAO {
             Conexao.closeConnection(con, stmt, rs);
         }
     
-        return produtos;
+        return compras;
     }
     
     public void create(CadastroCompras p){

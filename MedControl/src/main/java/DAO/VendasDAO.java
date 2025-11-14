@@ -37,7 +37,8 @@ public class VendasDAO {
                 p.setQtde(rs.getInt("qtde"));
                 p.setTotal_nota(rs.getDouble("total_nota"));
                 p.setForma_pagamento(rs.getString("forma_pagamento"));
-                p.setData_ult_compra((rs.getDate("data_ult_compra")));
+                p.setData_ult_venda((rs.getDate("data_ult_compra")));
+                vendas.add(p);
             }
             
         } catch (SQLException e) {
