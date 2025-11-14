@@ -59,13 +59,18 @@ public class VendasDAO {
             stmt = con.prepareStatement("insert into venda(nmr_nf_entrada,cnpj_drogaria,data_entrega, valor_total, custo_total, qtde, total_nota, forma_pagamento, data_ult_compra) values(?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, p.getNmr_nf_entrada());
             stmt.setString(2, p.getCnpj_drogaria());
-            stmt.setDate(3, (Date) p.getData_entrega());
+            
+            java.sql.Date dataEntregaSql = new java.sql.Date(p.getData_entrega().getTime());
+            stmt.setDate(3, dataEntregaSql);
+            
             stmt.setDouble(4, p.getValor_total());
             stmt.setDouble(5, p.getCusto_total());
             stmt.setInt(6, p.getQtde());
             stmt.setDouble(7, p.getTotal_nota());
             stmt.setString(8, p.getForma_pagamento());
-            stmt.setDate(9, (Date) p.getData_ult_venda());
+            
+            java.sql.Date dataUltSql = new java.sql.Date(p.getData_ult_venda().getTime());
+            stmt.setDate(9, dataUltSql);
         
             
             stmt.execute();

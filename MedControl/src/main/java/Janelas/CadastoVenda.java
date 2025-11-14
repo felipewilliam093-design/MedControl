@@ -4,7 +4,7 @@
  */
 package Janelas;
 
-import DAO.VendaDAO;
+
 import DAO.VendasDAO;
 import Model.VendaTableModel;
 import Objetos.CadastroVendas;
@@ -275,7 +275,7 @@ public class CadastoVenda extends javax.swing.JFrame {
     private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
         if (jTVenda.getSelectedRow() != -1){
             CadastroVendas c = modelo.pegaDadosLinha(jTVenda.getSelectedRow());
-            VendaDAO ddao = new VendaDAO();
+            VendasDAO ddao = new VendasDAO();
             ddao.delete(c);
             modelo.recarregaTabela();
         }
