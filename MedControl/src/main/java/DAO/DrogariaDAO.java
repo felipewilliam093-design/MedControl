@@ -39,6 +39,7 @@ public class DrogariaDAO {
                 p.setBairro(rs.getString("Bairro"));
                 p.setRua(rs.getString("Rua"));
                 p.setNumero(rs.getInt("Numero"));
+                drogarias.add(p);
             }
             
         } catch (SQLException e) {

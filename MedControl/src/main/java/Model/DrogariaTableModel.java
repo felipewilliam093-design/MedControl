@@ -99,7 +99,7 @@ public class DrogariaTableModel extends AbstractTableModel{
         return dados.get(linha);
     }
     
-    private void lerDados(){
+    public void lerDados(){
         DrogariaDAO ddao = new DrogariaDAO();
         
         for (Drogaria c : ddao.read()) {

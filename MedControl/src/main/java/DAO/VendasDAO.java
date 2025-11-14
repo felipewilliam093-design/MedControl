@@ -24,7 +24,7 @@ public class VendasDAO {
         List<CadastroVendas> vendas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM vendas");
+            stmt = con.prepareStatement("SELECT * FROM venda");
             rs = stmt.executeQuery();
             
             while(rs.next()){
@@ -35,7 +35,6 @@ public class VendasDAO {
                 p.setValor_total(rs.getDouble("valor_total"));
                 p.setCusto_total(rs.getDouble("custo_total"));
                 p.setQtde(rs.getInt("qtde"));
-                
                 p.setTotal_nota(rs.getDouble("total_nota"));
                 p.setForma_pagamento(rs.getString("forma_pagamento"));
                 p.setData_ult_compra((rs.getDate("data_ult_compra")));
