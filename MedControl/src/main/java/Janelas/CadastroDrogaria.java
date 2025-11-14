@@ -20,7 +20,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         initComponents();
         jTDrogaria.setModel(modelo);
         modelo.recarregaTabela();
-        modelo.lerDados();
+        
         this.setLocationRelativeTo(null);
     }
 
@@ -265,7 +265,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                     .addComponent(jBExcluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();

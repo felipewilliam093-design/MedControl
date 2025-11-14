@@ -35,6 +35,7 @@ public class LaboratorioDAO {
                 p.setBairro(rs.getString("Bairro"));
                 p.setRua(rs.getString("Rua"));
                 p.setNumero(rs.getInt("Numero"));
+                cadastros.add(p);
             }
             
         } catch (SQLException e) {
