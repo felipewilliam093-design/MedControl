@@ -4,7 +4,7 @@
  */
 package Model;
 
-import DAO.VendaDAO;
+import DAO.VendasDAO;
 import Objetos.CadastroVendas;
 import java.util.ArrayList;
 import java.util.Date;
@@ -103,7 +103,7 @@ public class VendaTableModel extends AbstractTableModel{
     }
     
     private void lerDados(){
-        VendaDAO vdao = new VendaDAO();
+        VendasDAO vdao = new VendasDAO();
         
         for (CadastroVendas cv : vdao.read()) {
             this.addLinha(cv);

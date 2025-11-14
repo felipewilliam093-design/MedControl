@@ -4,19 +4,24 @@
  */
 package Janelas;
 
-import Objetos.Laboratorio;
+import DAO.DrogariaDAO;
+import Model.DrogariaTableModel;
+import Objetos.Drogaria;
 
 /**
  *
  * @author william.flima4
  */
 public class CadastroDrogaria extends javax.swing.JFrame {
+    DrogariaTableModel modelo = new DrogariaTableModel();
 
-    /**
-     * Creates new form CadastroDrogaria
-     */
+    
     public CadastroDrogaria() {
         initComponents();
+        jTDrogaria.setModel(modelo);
+        modelo.recarregaTabela();
+        modelo.lerDados();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -46,14 +51,15 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         jTCep = new javax.swing.JTextField();
         jTBairro = new javax.swing.JTextField();
         jTRua = new javax.swing.JTextField();
-        jCEstado = new javax.swing.JComboBox<>();
         jTCidade = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTNumero = new javax.swing.JTextField();
+        jTEstado = new javax.swing.JTextField();
         jBCadastrar = new javax.swing.JButton();
         jBAlterar = new javax.swing.JButton();
         jBExcluir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTDrogaria = new javax.swing.JTable();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,12 +108,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
             }
         });
 
-        jCEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
-        jCEstado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCEstadoActionPerformed(evt);
-            }
-        });
+        jLabel3.setText("Numero");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,7 +123,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                             .addComponent(jLIE))
                         .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTIe, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTIe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                             .addComponent(jTCep)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,21 +134,23 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                             .addComponent(jTCnpj)
                             .addComponent(jTNome)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLBairro)
-                            .addComponent(jLRua))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                            .addComponent(jLBairro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLRua, javax.swing.GroupLayout.Alignment.LEADING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTRua)
-                            .addComponent(jTBairro)))
+                            .addComponent(jTBairro)
+                            .addComponent(jTNumero)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLEstado)
-                        .addGap(8, 8, 8)
-                        .addComponent(jCEstado, 0, 362, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLCidade)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLCidade)
+                            .addComponent(jLEstado))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTCidade)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTEstado)
+                            .addComponent(jTCidade))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -172,7 +175,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLEstado)
-                    .addComponent(jCEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCidade)
@@ -185,7 +188,11 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLRua)
                     .addComponent(jTRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jBCadastrar.setText("Cadastrar");
@@ -204,7 +211,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
 
         jBExcluir.setText("Excluir");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTDrogaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -215,55 +222,50 @@ public class CadastroDrogaria extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Consulta");
+        jTDrogaria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTDrogariaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTDrogaria);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jBCadastrar)
-                        .addGap(57, 57, 57)
-                        .addComponent(jBAlterar)
-                        .addGap(50, 50, 50)
-                        .addComponent(jBExcluir)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(47, 47, 47)
+                .addComponent(jBCadastrar)
+                .addGap(83, 83, 83)
+                .addComponent(jBAlterar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBExcluir)
+                .addGap(40, 40, 40))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jBAlterar)
+                    .addComponent(jBCadastrar)
+                    .addComponent(jBExcluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBAlterar)
-                            .addComponent(jBCadastrar)
-                            .addComponent(jBExcluir))
-                        .addGap(0, 24, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,26 +279,55 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jCEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCEstadoActionPerformed
-
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
-        Laboratorio c = new Laboratorio();
-        c.setCnpj(jTCnpj.getText());
-        c.setNome(jTNome.getText());
-        c.setIE(jTIe.getText());
-        c.setCep(jTCep.getText());
-        c.setEstado((String) jCEstado.getSelectedItem());
-        c.setCidade(jTCidade.getText());
-        c.setBairro(jTBairro.getText());
-        c.setRua(jTRua.getText());
+        Drogaria d = new Drogaria();
+        DrogariaDAO dao = new DrogariaDAO();
+        
+        d.setCnpj(jTCnpj.getText());
+        d.setIE(jTIe.getText());
+        d.setNome(jTNome.getText());
+        d.setCep(jTCep.getText());
+        d.setEstado(jTEstado.getText());
+        d.setCidade(jTCidade.getText());
+        d.setBairro(jTBairro.getText());
+        d.setRua(jTRua.getText());
+        
+        dao.create(d);
+        modelo.recarregaTabela();
+        limpaCampos();
+         
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBAlterarActionPerformed
 
+    private void jTDrogariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTDrogariaMouseClicked
+        if (jTDrogaria.getSelectedRow() != -1){
+            Drogaria d = modelo.pegaDadosLinha(jTDrogaria.getSelectedRow());
+            
+            jTCnpj.setText(d.getCnpj());
+            jTIe.setText(d.getIE());
+            jTNome.setText(d.getNome());
+            jTCep.setText(d.getCep());
+            jTEstado.setText(d.getEstado());
+            jTCidade.setText(d.getCidade());
+            jTBairro.setText(d.getBairro());
+            jTRua.setText(d.getRua());
+            jTNumero.setText(String.valueOf(d.getNumero()));
+        }
+    }//GEN-LAST:event_jTDrogariaMouseClicked
+
+    public void limpaCampos(){
+        jTCnpj.setText("");
+        jTIe.setText("");
+        jTNome.setText("");
+        jTCep.setText("");
+        jTCidade.setText("");
+        jTBairro.setText("");
+        jTRua.setText("");
+        jTNumero.setText("");
+    }
     /**
      * @param args the command line arguments
      */
@@ -336,7 +367,6 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluir;
-    private javax.swing.JComboBox<String> jCEstado;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLBairro;
@@ -348,16 +378,18 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLRua;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTBairro;
     private javax.swing.JTextField jTCep;
     private javax.swing.JTextField jTCidade;
     private javax.swing.JTextField jTCnpj;
+    private javax.swing.JTable jTDrogaria;
+    private javax.swing.JTextField jTEstado;
     private javax.swing.JTextField jTIe;
     private javax.swing.JTextField jTNome;
+    private javax.swing.JTextField jTNumero;
     private javax.swing.JTextField jTRua;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

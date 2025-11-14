@@ -4,9 +4,10 @@
  */
 package Janelas;
 
-import Objetos.Laboratorio;
+import DAO.VendaDAO;
+import DAO.VendasDAO;
+import Model.VendaTableModel;
 import Objetos.CadastroVendas;
-import java.time.Instant;
 import java.util.Date;
 
 /**
@@ -14,12 +15,14 @@ import java.util.Date;
  * @author leonardo.hpavan
  */
 public class CadastoVenda extends javax.swing.JFrame {
-
+            VendaTableModel modelo = new VendaTableModel();
     /**
      * Creates new form CadastoVenda
      */
     public CadastoVenda() {
         initComponents();
+        jTVenda.setModel(modelo);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -53,7 +56,7 @@ public class CadastoVenda extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTVenda = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +78,20 @@ public class CadastoVenda extends javax.swing.JFrame {
         jLabel8.setText("Forma de Pagamento");
 
         jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
 
-        jLabel9.setText("Data da Última Compra");
+        jLabel9.setText("Data da Última Venda");
 
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -104,7 +117,7 @@ public class CadastoVenda extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Consultar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTVenda.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -115,7 +128,12 @@ public class CadastoVenda extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTVenda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTVendaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTVenda);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,18 +239,61 @@ public class CadastoVenda extends javax.swing.JFrame {
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
         CadastroVendas c = new CadastroVendas();
+        VendasDAO ddao = new VendasDAO();
         
         c.setNmr_nf_entrada(Integer.parseInt(jTNmrNFEntrada.getText()));
         c.setCnpj_drogaria(jTCNPJ_drogaria.getText());
-        c.setData_entrega(Date (jTData_Entrega.getText()));
+        c.setData_entrega(parseDate (jTData_Entrega.getText()));
         c.setValor_total(Double.valueOf(jTValor_Total.getText()));
         c.setCusto_total(Double.valueOf(jTCusto_Total.getText()));
+        c.setTotal_nota(Double.valueOf(jTTotal_Nota.getText()));
+        c.setForma_pagamento(jTForma_Pagamento.getText());
+        c.setData_ult_venda(parseDate(jTData_Ult_Venda.getText()));
         
+        ddao.create(c);
+        modelo.recarregaTabela();
+        limpaCampos();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jTCusto_TotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCusto_TotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCusto_TotalActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+         if (jTVenda.getSelectedRow() != -1){
+            modelo.setValueAt(jTNmrNFEntrada.getText(), jTVenda.getSelectedRow(), 0);
+            modelo.setValueAt(jTCNPJ_drogaria.getText(), jTVenda.getSelectedRow(), 1);
+            modelo.setValueAt(jTData_Entrega.getText(), jTVenda.getSelectedRow(), 2);
+            modelo.setValueAt(jTValor_Total.getText(), jTVenda.getSelectedRow(), 3);
+            modelo.setValueAt(jTCusto_Total.getText(), jTVenda.getSelectedRow(), 4);
+            modelo.setValueAt(jTTotal_Nota.getText(), jTVenda.getSelectedRow(), 5);
+            modelo.setValueAt(jTForma_Pagamento.getText(), jTVenda.getSelectedRow(), 6);
+            modelo.setValueAt(jTData_Ult_Venda.getText(), jTVenda.getSelectedRow(), 7);
+         }
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTVenda.getSelectedRow() != -1){
+            CadastroVendas c = modelo.pegaDadosLinha(jTVenda.getSelectedRow());
+            VendaDAO ddao = new VendaDAO();
+            ddao.delete(c);
+            modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTVendaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTVendaMouseClicked
+        if (jTVenda.getSelectedRow() != -1){
+            CadastroVendas c = modelo.pegaDadosLinha(jTVenda.getSelectedRow());
+            jTNmrNFEntrada.setText(String.valueOf(c.getNmr_nf_entrada()));
+            jTCNPJ_drogaria.setText(c.getCnpj_drogaria());
+            jTData_Entrega.setText(String.valueOf(c.getData_entrega()));
+            jTValor_Total.setText(String.valueOf(c.getValor_total()));
+            jTCusto_Total.setText(String.valueOf(c.getCusto_total()));
+            jTTotal_Nota.setText(String.valueOf(c.getTotal_nota()));
+            jTForma_Pagamento.setText(c.getForma_pagamento());
+            jTData_Ult_Venda.setText(String.valueOf(c.getData_ult_venda()));
+        }
+    }//GEN-LAST:event_jTVendaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -292,10 +353,33 @@ public class CadastoVenda extends javax.swing.JFrame {
     private javax.swing.JTextField jTNmrNFEntrada;
     private javax.swing.JTextField jTTotal_Nota;
     private javax.swing.JTextField jTValor_Total;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTVenda;
     // End of variables declaration//GEN-END:variables
+    
+    private void limpaCampos() {
+        jTNmrNFEntrada.setText("");
+        jTCNPJ_drogaria.setText("");
+        jTData_Entrega.setText("");
+        jTValor_Total.setText("");
+        jTCusto_Total.setText("");
+        jTTotal_Nota.setText("");
+        jTForma_Pagamento.setText("");
+        jTData_Ult_Venda.setText("");
 
-    private Date Date(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+}
+
+    private Date parseDate(String text) {
+         if (text == null || text.trim().isEmpty()) {
+        return new Date(); // data atual
     }
+    try {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        return sdf.parse(text);
+    } catch (java.text.ParseException e) {
+        System.err.println("Erro ao converter data: " + text);
+        return new Date(); // fallback
+    }
+    }
+
 }

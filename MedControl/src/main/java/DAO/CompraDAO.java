@@ -60,13 +60,12 @@ public class CompraDAO {
             stmt = con.prepareStatement("insert into compra(num_nf_entrada,cnpj_lab,data_entrada, custo_total, valor_total,total_nota, forma_pagamento, data_ult_compra) values(?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setInt(1, p.getNum_nf_entrada());
             stmt.setString(2, p.getCnpj_lab());
-            stmt.setDate(3, (Date) p.getData_entrada());
+            stmt.setDate(3, new java.sql.Date(p.getData_entrada().getTime()));
             stmt.setDouble(4, p.getCusto_total());
             stmt.setDouble(5, p.getValor_total());
             stmt.setDouble(6, p.getTotal_nota());
             stmt.setString(7, p.getForma_pagamento());
-            stmt.setDate(8, (Date) p.getData_ult_compra());
-        
+            stmt.setDate(8, new java.sql.Date(p.getData_ult_compra().getTime()));     
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
