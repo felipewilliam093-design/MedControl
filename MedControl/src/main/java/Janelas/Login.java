@@ -38,7 +38,7 @@ public class Login extends javax.swing.JFrame {
         jPSenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Usuário");
 
@@ -108,18 +108,19 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
-        UsuarioDAO dao = new UsuarioDAO();
-       Usuario user = new Usuario();
+       UsuarioDAO dao = new UsuarioDAO();
+       Usuario user;
        
        user = dao.verificaUsuario(jTNome.getText());
        
        if (user.verificarSenha(new String(jPSenha.getPassword()))){
-           CadastroUsuario cp = new CadastroUsuario();
-           cp.setVisible(true);
-           this.dispose();
+           Principal p = new Principal();
+            p.setVisible(true);
+            this.dispose();
        }else {
            JOptionPane.showMessageDialog(rootPane, "Falha na autenticação!");
        }
+       
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     /**

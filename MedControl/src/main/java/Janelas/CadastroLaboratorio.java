@@ -4,6 +4,11 @@
  */
 package Janelas;
 
+import DAO.DrogariaDAO;
+import DAO.LaboratorioDAO;
+import Model.LaboratorioTableModel;
+import Objetos.Laboratorio;
+
 
 
 /**
@@ -11,13 +16,16 @@ package Janelas;
  * @author william.flima4
  */
 public class CadastroLaboratorio extends javax.swing.JFrame {
+    LaboratorioTableModel modelo = new LaboratorioTableModel();
     
     
     public CadastroLaboratorio() {
         initComponents();
-        
-        
+        jTLaboratorio.setModel(modelo);
+        modelo.recarregaTabela();
         this.setLocationRelativeTo(null);
+        
+      
     }
 
     /**
@@ -45,18 +53,18 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         jTCepLab = new javax.swing.JTextField();
         jTBairroLab = new javax.swing.JTextField();
         jTRuaLab = new javax.swing.JTextField();
-        jCEstadoLab = new javax.swing.JComboBox<>();
         jTCidadeLab = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTNumero = new javax.swing.JTextField();
+        jTEstado = new javax.swing.JTextField();
         jBCadastroLab = new javax.swing.JButton();
         jBAlterarLab = new javax.swing.JButton();
         jBDeletarLab = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTFornecedores = new javax.swing.JTable();
+        jTLaboratorio = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,8 +94,6 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
             }
         });
 
-        jCEstadoLab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins" }));
-
         jLabel2.setText("Número");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -105,7 +111,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                                     .addComponent(jLIE))
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTIeLab, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jTIeLab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                                     .addComponent(jTCepLab)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,14 +130,15 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(6, 6, 6)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTCidadeLab, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jCEstadoLab, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                        .addComponent(jTCidadeLab))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jTRuaLab, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jTBairroLab)))))))
+                                            .addComponent(jTBairroLab)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTEstado))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(5, 5, 5)
@@ -159,8 +166,8 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                     .addComponent(jLCEP))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCEstadoLab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLEstado))
+                    .addComponent(jLEstado)
+                    .addComponent(jTEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCidade)
@@ -201,7 +208,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
             }
         });
 
-        jTFornecedores.setModel(new javax.swing.table.DefaultTableModel(
+        jTLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -212,12 +219,12 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTFornecedores.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTLaboratorio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTFornecedoresMouseClicked(evt);
+                jTLaboratorioMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTFornecedores);
+        jScrollPane1.setViewportView(jTLaboratorio);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -232,7 +239,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -241,7 +248,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
                         .addComponent(jBAlterarLab)
                         .addGap(81, 81, 81)
                         .addComponent(jBDeletarLab)))
-                .addGap(18, 22, Short.MAX_VALUE)
+                .addGap(18, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -277,20 +284,68 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     }//GEN-LAST:event_jTBairroLabActionPerformed
 
     private void jBCadastroLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastroLabActionPerformed
-       
+        Laboratorio l = new Laboratorio();
+        LaboratorioDAO dao = new LaboratorioDAO();
+        
+        l.setCnpj(jTCnpjLab.getText());
+        l.setNome(jTNomeLab.getText());
+        l.setIE(jTIeLab.getText());
+        l.setCep(jTCepLab.getText());
+        l.setEstado(jTEstado.getText());
+        l.setCidade(jTCidadeLab.getText());
+        l.setBairro(jTBairroLab.getText());
+        l.setRua(jTRuaLab.getText());
+        l.setNumero(Integer.parseInt(jTNumero.getText()));
+        
+        dao.create(l);
+        modelo.recarregaTabela();
+        limpaCampos();
     }//GEN-LAST:event_jBCadastroLabActionPerformed
 
     private void jBAlterarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarLabActionPerformed
-        
+        if (jTLaboratorio.getSelectedRow() != -1){
+            modelo.setValueAt(jTCnpjLab.getText(), jTLaboratorio.getSelectedRow(), 0);
+            modelo.setValueAt(jTNomeLab.getText(), jTLaboratorio.getSelectedRow(), 1);
+            modelo.setValueAt(jTIeLab.getText(), jTLaboratorio.getSelectedRow(), 2);
+            modelo.setValueAt(jTCepLab.getText(), jTLaboratorio.getSelectedRow(), 3);
+            modelo.setValueAt(jTEstado.getText(), jTLaboratorio.getSelectedRow(), 4);
+            modelo.setValueAt(jTCidadeLab.getText(), jTLaboratorio.getSelectedRow(), 5);
+            modelo.setValueAt(jTBairroLab.getText(), jTLaboratorio.getSelectedRow(), 6);
+            modelo.setValueAt(jTRuaLab.getText(), jTLaboratorio.getSelectedRow(), 7);
+            modelo.setValueAt(jTNumero.getText(), jTLaboratorio.getSelectedRow(), 8);
+            
+            Laboratorio l = modelo.pegaDadosLinha(jTLaboratorio.getSelectedRow());
+            LaboratorioDAO dao = new LaboratorioDAO();
+            dao.update(l);
+            limpaCampos();
+            modelo.recarregaTabela();
+            
+        }
     }//GEN-LAST:event_jBAlterarLabActionPerformed
 
     private void jBDeletarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeletarLabActionPerformed
-        
+        if (jTLaboratorio.getSelectedRow() != -1){
+            Laboratorio p = modelo.pegaDadosLinha(jTLaboratorio.getSelectedRow());
+            LaboratorioDAO dao = new LaboratorioDAO();
+            dao.delete(p);
+            modelo.recarregaTabela();
+        }
     }//GEN-LAST:event_jBDeletarLabActionPerformed
 
-    private void jTFornecedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTFornecedoresMouseClicked
-        
-    }//GEN-LAST:event_jTFornecedoresMouseClicked
+    private void jTLaboratorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTLaboratorioMouseClicked
+        if (jTLaboratorio.getSelectedRow() != -1){
+            Laboratorio l = modelo.pegaDadosLinha(jTLaboratorio.getSelectedRow());
+            jTNomeLab.setText(l.getNome());
+            jTIeLab.setText(l.getIE());
+            jTCepLab.setText(l.getCep());
+            jTEstado.setText(l.getEstado());
+            jTCidadeLab.setText(l.getCidade());
+            jTBairroLab.setText(l.getBairro());
+            jTRuaLab.setText(l.getRua());
+            jTNumero.setText(String.valueOf(l.getNumero()));
+            
+        }
+    }//GEN-LAST:event_jTLaboratorioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -332,7 +387,6 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     private javax.swing.JButton jBAlterarLab;
     private javax.swing.JButton jBCadastroLab;
     private javax.swing.JButton jBDeletarLab;
-    private javax.swing.JComboBox<String> jCEstadoLab;
     private javax.swing.JLabel jLBairro;
     private javax.swing.JLabel jLCEP;
     private javax.swing.JLabel jLCNPJ;
@@ -350,8 +404,9 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
     private javax.swing.JTextField jTCepLab;
     private javax.swing.JTextField jTCidadeLab;
     private javax.swing.JTextField jTCnpjLab;
-    private javax.swing.JTable jTFornecedores;
+    private javax.swing.JTextField jTEstado;
     private javax.swing.JTextField jTIeLab;
+    private javax.swing.JTable jTLaboratorio;
     private javax.swing.JTextField jTNomeLab;
     private javax.swing.JTextField jTNumero;
     private javax.swing.JTextField jTRuaLab;

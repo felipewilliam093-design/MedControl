@@ -116,21 +116,23 @@ public class UsuarioDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         List<Usuario> usuarios = new ArrayList<>();
+        Usuario u = new Usuario();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM tbl_usuarios");
+            stmt = con.prepareStatement("SELECT * FROM tbl_usuarios where login = ?");
+            stmt.setString(1, login);
             rs = stmt.executeQuery();
             
             while(rs.next()){
-                Usuario u = new Usuario();
                 u.setId(rs.getInt("id"));
                 u.setNome(rs.getString("nome"));
                 u.setLogin(rs.getString("login"));
                 u.setSenha(rs.getString("senha"));
                 u.setTipo(rs.getString("tipo"));
+                usuarios.add(u);
                 
             }
-            
+            return u;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Falha ao obter dados: " + e);
         

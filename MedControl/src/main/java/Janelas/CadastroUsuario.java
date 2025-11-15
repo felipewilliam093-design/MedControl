@@ -16,15 +16,18 @@ import javax.swing.JOptionPane;
 public class CadastroUsuario extends javax.swing.JFrame {
     UsuarioTableModel modelo = new UsuarioTableModel();
 
-    
     public CadastroUsuario() {
         initComponents();
-        
- 
+    }
+    
+    public CadastroUsuario(Usuario u) {
+        initComponents();
+        this.setLocationRelativeTo(null);
         modelo.recarregaTabela();
         jCTipo.removeAllItems();
         jCTipo.addItem("Usuário");
         jCTipo.addItem("Admin");
+        
     }
 
     /**
@@ -50,7 +53,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jBAlterar = new javax.swing.JButton();
         jBDeletar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -72,7 +75,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jLabel5.setText("Tipo");
 
-        jCTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Usuário" }));
         jCTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCTipoActionPerformed(evt);
@@ -183,12 +186,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel1)
-                    .addContainerGap(172, Short.MAX_VALUE)))
+                    .addContainerGap(201, Short.MAX_VALUE)))
         );
 
         pack();
@@ -216,7 +219,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
             modelo.recarregaTabela();
                    
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar! Verifique os dados preenchidos!");
+            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar! Verifique os dados preenchidos!" + e);
         }
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
