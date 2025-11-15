@@ -79,16 +79,17 @@ public class LaboratorioDAO {
         PreparedStatement stmt = null;
         
         try {
-            stmt = con.prepareStatement("update laboratorio_fornecedor set Cnpj= ?, IE = ?, Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
-            stmt.setString(1, p.getCnpj());
-            stmt.setString(2, p.getIE());
-            stmt.setString(3, p.getNome());
-            stmt.setString(4, p.getCep());
-            stmt.setString(5, p.getEstado());
-            stmt.setString(6, p.getCidade());
-            stmt.setString(7, p.getBairro());
-            stmt.setString(8, p.getRua());
-            stmt.setInt(9, p.getNumero());
+            stmt = con.prepareStatement("update laboratorio_fornecedor set IE = ?, Nome = ?, CEP = ?, Estado = ?, Cidade = ?, Bairro = ?, Rua = ?, Numero = ? where cnpj = ?");
+            stmt.setString(1, p.getIE());
+            stmt.setString(2, p.getNome());
+            stmt.setString(3, p.getCep());
+            stmt.setString(4, p.getEstado());
+            stmt.setString(5, p.getCidade());
+            stmt.setString(6, p.getBairro());
+            stmt.setString(7, p.getRua());
+            stmt.setInt(8, p.getNumero());
+            
+            stmt.setString(9, p.getCnpj());
             
             stmt.execute();
             JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");

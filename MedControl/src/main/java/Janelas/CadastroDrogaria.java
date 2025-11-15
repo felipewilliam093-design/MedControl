@@ -210,6 +210,11 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         });
 
         jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
 
         jTDrogaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,13 +289,14 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         DrogariaDAO dao = new DrogariaDAO();
         
         d.setCnpj(jTCnpj.getText());
-        d.setIE(jTIe.getText());
         d.setNome(jTNome.getText());
+        d.setIE(jTIe.getText());
         d.setCep(jTCep.getText());
         d.setEstado(jTEstado.getText());
         d.setCidade(jTCidade.getText());
         d.setBairro(jTBairro.getText());
         d.setRua(jTRua.getText());
+        d.setNumero(Integer.parseInt(jTNumero.getText()));
         
         dao.create(d);
         modelo.recarregaTabela();
@@ -299,7 +305,24 @@ public class CadastroDrogaria extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
-        // TODO add your handling code here:
+        if (jTDrogaria.getSelectedRow() != -1){
+            modelo.setValueAt(jTCnpj.getText(), jTDrogaria.getSelectedRow(), 0);
+            modelo.setValueAt(jTNome.getText(), jTDrogaria.getSelectedRow(), 1);
+            modelo.setValueAt(jTIe.getText(), jTDrogaria.getSelectedRow(), 2);
+            modelo.setValueAt(jTCep.getText(), jTDrogaria.getSelectedRow(), 3);
+            modelo.setValueAt(jTEstado.getText(), jTDrogaria.getSelectedRow(), 4);
+            modelo.setValueAt(jTCidade.getText(), jTDrogaria.getSelectedRow(), 5);
+            modelo.setValueAt(jTBairro.getText(), jTDrogaria.getSelectedRow(), 6);
+            modelo.setValueAt(jTRua.getText(), jTDrogaria.getSelectedRow(), 7);
+            modelo.setValueAt(jTNumero.getText(), jTDrogaria.getSelectedRow(), 8);
+            
+            Drogaria p = modelo.pegaDadosLinha(jTDrogaria.getSelectedRow());
+            DrogariaDAO dao = new DrogariaDAO();
+            dao.update(p);
+            limpaCampos();
+            modelo.recarregaTabela();
+            
+        }
     }//GEN-LAST:event_jBAlterarActionPerformed
 
     private void jTDrogariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTDrogariaMouseClicked
@@ -307,8 +330,8 @@ public class CadastroDrogaria extends javax.swing.JFrame {
             Drogaria d = modelo.pegaDadosLinha(jTDrogaria.getSelectedRow());
             
             jTCnpj.setText(d.getCnpj());
-            jTIe.setText(d.getIE());
             jTNome.setText(d.getNome());
+            jTIe.setText(d.getIE());
             jTCep.setText(d.getCep());
             jTEstado.setText(d.getEstado());
             jTCidade.setText(d.getCidade());
@@ -317,6 +340,15 @@ public class CadastroDrogaria extends javax.swing.JFrame {
             jTNumero.setText(String.valueOf(d.getNumero()));
         }
     }//GEN-LAST:event_jTDrogariaMouseClicked
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTDrogaria.getSelectedRow() != -1){
+            Drogaria p = modelo.pegaDadosLinha(jTDrogaria.getSelectedRow());
+            DrogariaDAO dao = new DrogariaDAO();
+            dao.delete(p);
+            modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     public void limpaCampos(){
         jTCnpj.setText("");
