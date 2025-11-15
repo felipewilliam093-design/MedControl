@@ -8,21 +8,32 @@ package Janelas;
 import DAO.VendasDAO;
 import Model.VendaTableModel;
 import Objetos.CadastroVendas;
+import Objetos.Usuario;
 import java.util.Date;
 
 /**
  *
  * @author leonardo.hpavan
  */
-public class CadastoVenda extends javax.swing.JFrame {
+public class CadastroVenda extends javax.swing.JFrame {
             VendaTableModel modelo = new VendaTableModel();
     /**
      * Creates new form CadastoVenda
      */
-    public CadastoVenda() {
+    public CadastroVenda() {
+        initComponents();
+    }
+            
+    public CadastroVenda(Usuario u) {
         initComponents();
         jTVenda.setModel(modelo);
         this.setLocationRelativeTo(null);
+        
+        if ("Admin".equals(u.getTipo())){
+            jBUsuarios.setEnabled(true);
+        } else {
+            jBUsuarios.setEnabled(false);
+        }
     }
 
     /**
@@ -57,8 +68,9 @@ public class CadastoVenda extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTVenda = new javax.swing.JTable();
+        jBUsuarios = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTData_Ult_Venda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +109,7 @@ public class CadastoVenda extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastro de Venda");
 
-        jLabel2.setText("Número Nota Fisca de Entrada");
+        jLabel2.setText("Número Nota Fiscal de Entrada");
 
         jLabel3.setText("CNPJ Drogaria");
 
@@ -134,6 +146,8 @@ public class CadastoVenda extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTVenda);
+
+        jBUsuarios.setText("Usuarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,9 +190,13 @@ public class CadastoVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 34, Short.MAX_VALUE)
+                        .addGap(0, 31, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBUsuarios)
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +245,9 @@ public class CadastoVenda extends javax.swing.JFrame {
                             .addComponent(jBAlterar)
                             .addComponent(jBCadastrar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBUsuarios)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,20 +332,21 @@ public class CadastoVenda extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastoVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroVenda.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastoVenda().setVisible(true);
+                new CadastroVenda().setVisible(true);
             }
         });
     }
@@ -334,6 +355,7 @@ public class CadastoVenda extends javax.swing.JFrame {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

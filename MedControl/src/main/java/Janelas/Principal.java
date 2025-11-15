@@ -4,6 +4,7 @@
  */
 package Janelas;
 
+
 /**
  *
  * @author william.flima4
@@ -28,37 +29,47 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBDrogarias = new javax.swing.JButton();
+        jBVendas = new javax.swing.JButton();
+        jBCompras = new javax.swing.JButton();
+        jBLaboratorios = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton5.setText("Estoque");
 
-        jButton1.setText("Clientes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBDrogarias.setText("Drogarias");
+        jBDrogarias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBDrogariasActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Vendas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBVendas.setText("Vendas");
+        jBVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBVendasActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Compras");
+        jBCompras.setText("Compras");
+        jBCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBComprasActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Fornecedores");
+        jBLaboratorios.setText("Laboratórios");
+        jBLaboratorios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLaboratoriosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,16 +79,16 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jButton5)
                 .addGap(57, 57, 57)
-                .addComponent(jButton1)
+                .addComponent(jBDrogarias)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(jBVendas)
                 .addGap(16, 16, 16))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addComponent(jButton4)
+                .addComponent(jBCompras)
                 .addGap(58, 58, 58)
-                .addComponent(jButton3)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addComponent(jBLaboratorios)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,12 +96,12 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBDrogarias)
+                    .addComponent(jBVendas))
                 .addGap(61, 61, 61)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(jBCompras)
+                    .addComponent(jBLaboratorios))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
@@ -136,13 +147,25 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jBVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVendasActionPerformed
+        CadastroVenda cv = new CadastroVenda();
+        cv.setVisible(true);
+    }//GEN-LAST:event_jBVendasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBDrogariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDrogariasActionPerformed
+        CadastroDrogaria cd = new CadastroDrogaria();
+        cd.setVisible(true);
+    }//GEN-LAST:event_jBDrogariasActionPerformed
+
+    private void jBComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComprasActionPerformed
+        CadastroCompra cc = new CadastroCompra();
+        cc.setVisible(true);
+    }//GEN-LAST:event_jBComprasActionPerformed
+
+    private void jBLaboratoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLaboratoriosActionPerformed
+        CadastroLaboratorio cl = new CadastroLaboratorio();
+        cl.setVisible(true);
+    }//GEN-LAST:event_jBLaboratoriosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,10 +203,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBCompras;
+    private javax.swing.JButton jBDrogarias;
+    private javax.swing.JButton jBLaboratorios;
+    private javax.swing.JButton jBVendas;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;

@@ -7,6 +7,7 @@ package Janelas;
 import DAO.CompraDAO;
 import Model.CompraTableModel;
 import Objetos.CadastroCompras;
+import Objetos.Usuario;
 import java.time.Instant;
 import java.util.Date;
 
@@ -21,8 +22,18 @@ public class CadastroCompra extends javax.swing.JFrame {
      */
     public CadastroCompra() {
         initComponents();
+    }        
+            
+    public CadastroCompra(Usuario u) {
+        initComponents();
         jTCompra.setModel(modelo);
         this.setLocationRelativeTo(this);
+        
+        if ("Admin".equals(u.getTipo())){
+            jBUsuarios.setEnabled(true);
+        } else {
+            jBUsuarios.setEnabled(false);
+        }
     }
 
     /**
@@ -57,8 +68,9 @@ public class CadastroCompra extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTCompra = new javax.swing.JTable();
         jLabel10 = new javax.swing.JLabel();
+        jBUsuarios = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -135,6 +147,8 @@ public class CadastroCompra extends javax.swing.JFrame {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Consulta");
 
+        jBUsuarios.setText("Usuarios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,6 +193,10 @@ public class CadastroCompra extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jBUsuarios)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +245,9 @@ public class CadastroCompra extends javax.swing.JFrame {
                             .addComponent(jBExcluir)
                             .addComponent(jBAlterar)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jBUsuarios)
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -334,6 +354,7 @@ public class CadastroCompra extends javax.swing.JFrame {
     private javax.swing.JButton jBAlterar;
     private javax.swing.JButton jBCadastrar;
     private javax.swing.JButton jBExcluir;
+    private javax.swing.JButton jBUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

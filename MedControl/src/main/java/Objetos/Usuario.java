@@ -95,7 +95,7 @@ public class Usuario {
     /**
      * @param senhaHash the senhaHash to set
      */
-    public void setSenhaHash(String senhaHash) {
+    public void setSenhaHash(String senha) {
         this.senhaHash = encoder.encode(senha); //faz a criptografia  
     }
     
