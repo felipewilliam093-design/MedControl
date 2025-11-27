@@ -4,18 +4,27 @@
  */
 package Janelas;
 
+import DAO.ListaMedicamentoDAO;
+import Model.ListaMedicamentoTableModel;
+import Objetos.CadastroListaMed;
+
+
+
 /**
  *
  * @author william.flima4
  */
 public class Estoque extends javax.swing.JFrame {
-
+    ListaMedicamentoTableModel modelo = new ListaMedicamentoTableModel();
     /**
      * Creates new form Estoque
      */
     public Estoque() {
         initComponents();
-    }
+        jTEstoque.setModel(modelo);
+        modelo.recarregaTabela();
+        this.setLocationRelativeTo(null);
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +35,232 @@ public class Estoque extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jTCnpjLab = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTCustoUnitario = new javax.swing.JTextField();
+        jTValorUnitario = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTDescricao = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jTcodigodoMedicamento = new javax.swing.JTextField();
+        jBCadastrar = new javax.swing.JButton();
+        jBAlterar = new javax.swing.JButton();
+        jBExcluir = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTEstoque = new javax.swing.JTable();
+
+        jTextField1.setText("jTextField1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Estoque");
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel2.setText("Código do Medicamento ");
+
+        jLabel3.setText("CNPJ Lab");
+
+        jLabel5.setText("Custo Unitário ");
+
+        jLabel6.setText("Valor Unitário ");
+
+        jLabel7.setText("Descrição");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTcodigodoMedicamento, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(jTCnpjLab)
+                            .addComponent(jTCustoUnitario)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                        .addComponent(jTValorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jTcodigodoMedicamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTCnpjLab, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jTCustoUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jTValorUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jTDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jBCadastrar.setText("Cadastrar");
+        jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarActionPerformed(evt);
+            }
+        });
+
+        jBAlterar.setText("Alterar");
+        jBAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAlterarActionPerformed(evt);
+            }
+        });
+
+        jBExcluir.setText("Excluir");
+        jBExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluirActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("Consulta");
+
+        jTEstoque.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTEstoque);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jBCadastrar)
+                        .addGap(103, 103, 103)
+                        .addComponent(jBAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBExcluir)
+                        .addGap(28, 28, 28)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(24, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBCadastrar)
+                            .addComponent(jBAlterar)
+                            .addComponent(jBExcluir)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
+       CadastroListaMed clm = new CadastroListaMed();
+       ListaMedicamentoDAO dao = new ListaMedicamentoDAO();
+        
+        clm.setCodigo(jTcodigodoMedicamento.getText());
+        clm.setCnpj_lab(jTCnpjLab.getText());
+        clm.setCusto_unit(jTCustoUnitario.getText());
+        clm.setValor_unit(jTValorUnitario.getText());
+        clm.setDescricao(jTDescricao.getText());
+        
+        dao.create(clm);
+        modelo.recarregaTabela();
+        limpaCampos();
+    }//GEN-LAST:event_jBCadastrarActionPerformed
+
+    private void jBAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAlterarActionPerformed
+        if (jTEstoque.getSelectedRow() != -1){
+	    modelo.setValueAt(jTcodigodoMedicamento.getText(), jTEstoque.getSelectedRow(), 0);
+	    modelo.setValueAt(jTCnpjLab.getText(), jTEstoque.getSelectedRow(), 1);
+	    modelo.setValueAt(jTCustoUnitario.getText(), jTEstoque.getSelectedRow(), 2);
+	    modelo.setValueAt(jTValorUnitario.getText(), jTEstoque.getSelectedRow(), 3);
+	    modelo.setValueAt(jTDescricao.getText(), jTEstoque.getSelectedRow(), 4);
+	
+	    CadastroListaMed clm = new CadastroListaMed();
+	    ListaMedicamentoDAO dao = new ListaMedicamentoDAO();
+	    dao.update(clm);
+	    limpaCampos();
+	    modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBAlterarActionPerformed
+
+    private void jBExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluirActionPerformed
+        if (jTEstoque.getSelectedRow() != -1){
+	   CadastroListaMed clm = new CadastroListaMed();
+	   ListaMedicamentoDAO dao = new ListaMedicamentoDAO();
+	   dao.delete(clm);
+	   modelo.recarregaTabela();
+        }
+    }//GEN-LAST:event_jBExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +298,32 @@ public class Estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAlterar;
+    private javax.swing.JButton jBCadastrar;
+    private javax.swing.JButton jBExcluir;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTCnpjLab;
+    private javax.swing.JTextField jTCustoUnitario;
+    private javax.swing.JTextField jTDescricao;
+    private javax.swing.JTable jTEstoque;
+    private javax.swing.JTextField jTValorUnitario;
+    private javax.swing.JTextField jTcodigodoMedicamento;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+    
+    private void limpaCampos() {
+        jTcodigodoMedicamento.setText("");
+        jTCnpjLab.setText("");
+        jTCustoUnitario.setText("");
+        jTValorUnitario.setText("");
+        jTDescricao.setText("");              
+    }
 }
