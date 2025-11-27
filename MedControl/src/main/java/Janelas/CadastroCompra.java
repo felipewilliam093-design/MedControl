@@ -22,6 +22,7 @@ public class CadastroCompra extends javax.swing.JFrame {
      */
     public CadastroCompra() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }        
             
     public CadastroCompra(Usuario u) {
