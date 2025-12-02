@@ -9,7 +9,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -126,12 +126,10 @@
                   <EmptySpace pref="35" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jTDescricao" pref="270" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jTValorUnitario" pref="270" max="32767" attributes="0"/>
-                          <Component id="jTcodigodoMedicamento" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jTCnpjLab" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jTCustoUnitario" alignment="1" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="jTValorUnitario" pref="270" max="32767" attributes="0"/>
+                      <Component id="jTcodigodoMedicamento" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTCnpjLab" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jTCustoUnitario" alignment="1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -263,6 +261,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTEstoqueMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

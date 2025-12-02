@@ -7,6 +7,7 @@ package Janelas;
 import DAO.ListaMedicamentoDAO;
 import Model.ListaMedicamentoTableModel;
 import Objetos.CadastroListaMed;
+import java.awt.Color;
 
 
 
@@ -24,6 +25,7 @@ public class Estoque extends javax.swing.JFrame {
         jTEstoque.setModel(modelo);
         modelo.recarregaTabela();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
    }
 
     /**
@@ -57,7 +59,7 @@ public class Estoque extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -90,11 +92,10 @@ public class Estoque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTDescricao, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTValorUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
-                        .addComponent(jTcodigodoMedicamento, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTCnpjLab, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTCustoUnitario, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jTValorUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                    .addComponent(jTcodigodoMedicamento, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTCnpjLab, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTCustoUnitario, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,6 +163,11 @@ public class Estoque extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTEstoque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTEstoqueMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTEstoque);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,6 +262,17 @@ public class Estoque extends javax.swing.JFrame {
 	   modelo.recarregaTabela();
         }
     }//GEN-LAST:event_jBExcluirActionPerformed
+
+    private void jTEstoqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTEstoqueMouseClicked
+        if (jTEstoque.getSelectedRow() != -1){
+            CadastroListaMed e = modelo.pegaDadosLinha(jTEstoque.getSelectedRow());
+            jTcodigodoMedicamento.setText(e.getCodigo());
+            jTCnpjLab.setText(e.getCnpj_lab());
+            jTCustoUnitario.setText(e.getCusto_unit());
+            jTValorUnitario.setText(e.getValor_unit());
+            jTDescricao.setText(e.getDescricao());            
+        }
+    }//GEN-LAST:event_jTEstoqueMouseClicked
 
     /**
      * @param args the command line arguments

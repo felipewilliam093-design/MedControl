@@ -4,6 +4,8 @@
  */
 package Janelas;
 
+import java.awt.Color;
+
 
 /**
  *
@@ -17,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
     /**
@@ -40,6 +43,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jButton5.setText("Estoque");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jBDrogarias.setText("Drogarias");
         jBDrogarias.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +150,11 @@ public class Principal extends javax.swing.JFrame {
         CadastroLaboratorio cl = new CadastroLaboratorio();
         cl.setVisible(true);
     }//GEN-LAST:event_jBLaboratoriosActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Estoque est = new Estoque();
+        est.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

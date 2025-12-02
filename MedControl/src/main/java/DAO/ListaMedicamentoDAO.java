@@ -36,7 +36,7 @@ public class ListaMedicamentoDAO {
                 p.setCusto_unit(rs.getString("custo_unit"));
                 p.setValor_unit(rs.getString("valor_unit"));
                 p.setDescricao(rs.getString("descricao"));
-                
+                medicamentos.add(p);
             }
             
         } catch (SQLException e) {

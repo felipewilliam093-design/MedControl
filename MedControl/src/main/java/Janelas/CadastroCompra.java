@@ -8,6 +8,7 @@ import DAO.CompraDAO;
 import Model.CompraTableModel;
 import Objetos.CadastroCompras;
 import Objetos.Usuario;
+import java.awt.Color;
 import java.time.Instant;
 import java.util.Date;
 
@@ -29,6 +30,7 @@ public class CadastroCompra extends javax.swing.JFrame {
         initComponents();
         jTCompra.setModel(modelo);
         this.setLocationRelativeTo(this);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         
         if ("Admin".equals(u.getTipo())){
             jBUsuarios.setEnabled(true);
