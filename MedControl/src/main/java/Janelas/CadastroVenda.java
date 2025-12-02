@@ -9,6 +9,7 @@ import DAO.VendasDAO;
 import Model.VendaTableModel;
 import Objetos.CadastroVendas;
 import Objetos.Usuario;
+import java.awt.Color;
 import java.util.Date;
 
 /**
@@ -28,6 +29,7 @@ public class CadastroVenda extends javax.swing.JFrame {
         initComponents();
         jTVenda.setModel(modelo);
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
         
         if ("Admin".equals(u.getTipo())){
             jBUsuarios.setEnabled(true);

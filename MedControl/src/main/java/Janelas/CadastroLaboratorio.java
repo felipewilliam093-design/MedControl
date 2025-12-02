@@ -8,6 +8,7 @@ import DAO.DrogariaDAO;
 import DAO.LaboratorioDAO;
 import Model.LaboratorioTableModel;
 import Objetos.Laboratorio;
+import java.awt.Color;
 
 
 
@@ -24,7 +25,7 @@ public class CadastroLaboratorio extends javax.swing.JFrame {
         jTLaboratorio.setModel(modelo);
         modelo.recarregaTabela();
         this.setLocationRelativeTo(null);
-        
+        getContentPane().setBackground(Color.LIGHT_GRAY);
       
     }
 

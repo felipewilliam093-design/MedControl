@@ -7,6 +7,7 @@ package Janelas;
 import DAO.DrogariaDAO;
 import Model.DrogariaTableModel;
 import Objetos.Drogaria;
+import java.awt.Color;
 
 /**
  *
@@ -22,6 +23,7 @@ public class CadastroDrogaria extends javax.swing.JFrame {
         modelo.recarregaTabela();
         
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
     /**
