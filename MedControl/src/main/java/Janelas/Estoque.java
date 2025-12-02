@@ -7,6 +7,7 @@ package Janelas;
 import DAO.ListaMedicamentoDAO;
 import Model.ListaMedicamentoTableModel;
 import Objetos.CadastroListaMed;
+import java.awt.Color;
 
 
 
@@ -24,6 +25,7 @@ public class Estoque extends javax.swing.JFrame {
         jTEstoque.setModel(modelo);
         modelo.recarregaTabela();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
    }
 
     /**

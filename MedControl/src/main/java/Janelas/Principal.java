@@ -4,6 +4,8 @@
  */
 package Janelas;
 
+import java.awt.Color;
+
 
 /**
  *
@@ -17,6 +19,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
+        getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
     /**

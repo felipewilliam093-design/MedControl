@@ -7,6 +7,7 @@ package Janelas;
 import DAO.UsuarioDAO;
 import Model.UsuarioTableModel;
 import Objetos.Usuario;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +28,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jCTipo.removeAllItems();
         jCTipo.addItem("Usuário");
         jCTipo.addItem("Admin");
-        
+        getContentPane().setBackground(Color.LIGHT_GRAY);
     }
 
     /**
