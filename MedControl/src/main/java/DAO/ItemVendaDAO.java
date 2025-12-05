@@ -36,6 +36,8 @@ public class ItemVendaDAO {
                 iv.setCusto_unit(rs.getDouble("custo_unit"));
                 iv.setValor_unit(rs.getDouble("valor_unit"));
                 iv.setDescricao("descricao");
+                CadastroItemVendas p;
+                itemvenda.add(iv);
             }
             
         } catch (SQLException e) {
